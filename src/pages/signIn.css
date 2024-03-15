@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.container {
+  width: 1000px;
+  height: 520px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 100px;
+  padding-bottom: 30px;
+  border-radius: 20px;
+}
+
+.side-img {
+  display: flex;
+  position: absolute;
+}
+
+.side-img img {
+  width: 350px;
+  height: 550px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 45px;
+  margin-left: 10.5em;
+}
+
+.text {
+  display: inline-flex;
+  gap: 30px;
+  color: #000000;
+  font-size: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.underline {
+  width: 109.5px;
+  height: 6px;
+  background-color: #056488;
+  margin-right: 140px;
+  margin-top: 0.5em;
+}
+
+.inputs {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.input input {
+  height: 45px;
+  width: 416px;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-left: 350px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.submit-container {
+  display: flex;
+  gap: 30px;
+  margin: 60px auto;
+  padding-left: 358px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 65px;
+  font-size: 33px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #ffffff;
+  background-color: #056488;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
