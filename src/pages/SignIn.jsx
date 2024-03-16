@@ -4,12 +4,13 @@ import "./signIn.css";
 
 // img
 import loginImg from "../assets/signinImage.png";
+import SignUp from "../pages/SignUp";
 
 const SignIn = () => {
   return (
     <>
       <div className="container">
-      <div className="side-img">
+        <div className="side-img">
           <img src={loginImg} alt="side-img" />
         </div>
         <div className="header">
@@ -26,9 +27,16 @@ const SignIn = () => {
           <div className="input">
             <input type="text" placeholder="PASSWORD" />
           </div>
+          <div className="sign-up-nav">
+            <p>
+              Don&#39;t have an account? <Link to={"signUp"}>Sign up.</Link>
+            </p>
+          </div>
         </div>
         <div className="submit-container">
-          <Link className="submit" to={"/signUp"}>SIGN IN</Link>
+          <Link className="submit" to={"/signUp"}>
+            SIGN IN
+          </Link>
         </div>
       </div>
     </>

@@ -52,7 +52,7 @@
   margin-top: 55px;
   display: flex;
   flex-direction: column;
-  gap: 46px;
+  gap: 50px;
 }
 
 .input {
@@ -70,12 +70,31 @@
   border: none;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+.input input:focus {
+  background-color: #056488;
+  color: #ffffff;
+  border: none;
+}
+
+.sign-up-nav {
+  display: flex;
+  margin-top: 140px;
+  margin-left: 461px;
+  position: absolute;
+}
+
+.sign-up-nav p {
+  opacity: 70%;
 }
 
 .submit-container {
   display: flex;
   gap: 30px;
-  margin: 60px auto;
+  margin: 70px auto;
   padding-left: 358px;
 }
 
@@ -84,8 +103,8 @@
   justify-content: center;
   align-items: center;
   width: 250px;
-  height: 65px;
-  font-size: 33px;
+  height: 55px;
+  font-size: 30px;
   font-weight: 600;
   font-family: "Inter", sans-serif;
   color: #ffffff;
