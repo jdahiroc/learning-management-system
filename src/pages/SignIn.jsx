@@ -4,7 +4,7 @@ import "./signIn.css";
 
 // img
 import loginImg from "../assets/signinImage.png";
-import SignUp from "../pages/SignUp";
+// import SignUp from "../pages/SignUp";
 
 const SignIn = () => {
   return (
