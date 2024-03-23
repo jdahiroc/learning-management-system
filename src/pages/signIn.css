@@ -51,15 +51,15 @@
   color: #000000;
   font-size: 28px;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .underline {
   width: 109.5px;
-  height: 6px;
+  height: 5px;
   background-color: #056488;
   margin-right: 140px;
-  margin-top: 0.5em;
+  margin-top: 0.2em;
 }
 
 .inputs {
@@ -80,7 +80,7 @@
   height: 45px;
   width: 416px;
   font-size: 16px;
-  padding-left: 10px;
+  padding-left: 15px;
   margin-left: 250px;
   border: none;
   border-radius: 5px;
@@ -101,6 +101,11 @@
   margin-top: 0.5px;
   margin-left: 365px;
   position: absolute;
+}
+
+.sign-up-nav p .sign-up-link {
+  text-decoration: none;
+  color: #056488;
 }
 
 .sign-up-nav p {

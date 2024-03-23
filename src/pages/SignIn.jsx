@@ -22,7 +22,7 @@ const SignIn = () => {
     setErrMsg("");
     try {
       await signIn(email, password);
-      navigate("/signUp");
+      navigate("/homepage");
     } catch (e) {
       console.log(e.message);
     }
@@ -53,7 +53,7 @@ const SignIn = () => {
             <div className="input">
               <input
                 type="text"
-                placeholder="USERNAME"
+                placeholder="Username"
                 autoComplete="off"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -61,14 +61,14 @@ const SignIn = () => {
             <div className="input">
               <input
                 type="password"
-                placeholder="PASSWORD"
+                placeholder="Password"
                 autoComplete="off"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="sign-up-nav">
               <p>
-                Don&#39;t have an account? <Link to={"/signup"}>Sign up.</Link>
+                Don&#39;t have an account? <Link className="sign-up-link" to={"/signup"}>Sign up.</Link>
               </p>
             </div>
             <div className="submit-container">
