@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { UserAuth } from "../context/AuthContext";
+
 // CSS
 import "./signIn.css";
 
@@ -7,8 +10,33 @@ import loginImg from "../assets/signinImage.png";
 // import SignUp from "../pages/SignUp";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const { signIn } = UserAuth();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrMsg("");
+    try {
+      await signIn(email, password);
+      navigate("/signUp");
+    } catch (e) {
+      console.log(e.message);
+    }
+    return setErrMsg("Something went wrong!");
+  };
+
   return (
     <>
+      <div className="error-container-login">
+        {/* error message */}
+        <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+          {errMsg}
+        </p>
+      </div>
       <div className="container">
         <div className="side-img">
           <img src={loginImg} alt="side-img" />
@@ -21,22 +49,32 @@ const SignIn = () => {
           <div className="underline"></div>
         </div>
         <div className="inputs">
-          <div className="input">
-            <input type="text" placeholder="USERNAME" />
-          </div>
-          <div className="input">
-            <input type="text" placeholder="PASSWORD" />
-          </div>
-          <div className="sign-up-nav">
-            <p>
-              Don&#39;t have an account? <Link to={"signUp"}>Sign up.</Link>
-            </p>
-          </div>
-        </div>
-        <div className="submit-container">
-          <Link className="submit" to={"/signUp"}>
-            SIGN IN
-          </Link>
+          <form onSubmit={handleSubmit}>
+            <div className="input">
+              <input
+                type="text"
+                placeholder="USERNAME"
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="input">
+              <input
+                type="password"
+                placeholder="PASSWORD"
+                autoComplete="off"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="sign-up-nav">
+              <p>
+                Don&#39;t have an account? <Link to={"/signup"}>Sign up.</Link>
+              </p>
+            </div>
+            <div className="submit-container">
+              <button className="submit">SIGN IN</button>
+            </div>
+          </form>
         </div>
       </div>
     </>

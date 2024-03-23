@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
+/* Error Message */
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 2%;
+  left: 16%;
+  width: 67%;
+}
 .container {
   width: 1000px;
   height: 520px;
@@ -15,11 +28,13 @@
 .side-img {
   display: flex;
   position: absolute;
+  margin-right: 650px;
+  margin-top: 30px;
 }
 
 .side-img img {
   width: 350px;
-  height: 550px;
+  height: 570px;
 }
 
 .header {
@@ -27,8 +42,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 45px;
-  margin-left: 10.5em;
+  margin-left: 360px;
 }
 
 .text {
@@ -52,13 +66,14 @@
   margin-top: 55px;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
 }
 
 .input {
   display: flex;
   align-items: center;
-  margin: auto;
+  margin-top: 25px;
+  margin-left: 110px;
 }
 
 .input input {
@@ -66,24 +81,25 @@
   width: 416px;
   font-size: 16px;
   padding-left: 10px;
-  margin-left: 350px;
+  margin-left: 250px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  background-color: #edecec;
   font-family: "Inter", sans-serif;
   font-weight: 500;
 }
 
 .input input:focus {
-  background-color: #056488;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
 }
 
 .sign-up-nav {
   display: flex;
-  margin-top: 140px;
-  margin-left: 461px;
+  margin-top: 0.5px;
+  margin-left: 365px;
   position: absolute;
 }
 
@@ -95,7 +111,7 @@
   display: flex;
   gap: 30px;
   margin: 70px auto;
-  padding-left: 358px;
+  padding-left: 450px;
 }
 
 .submit {
@@ -104,7 +120,7 @@
   align-items: center;
   width: 250px;
   height: 55px;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   font-family: "Inter", sans-serif;
   color: #ffffff;
@@ -112,4 +128,5 @@
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
+  border: #056488;
 }
