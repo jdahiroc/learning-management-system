@@ -31,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 540px;
+  height: 570px;
 }
 
 .box img {
@@ -44,7 +44,7 @@ body {
 
 /* inputs */
 
-.inputs{ 
+.inputs {
   display: flex;
   flex-direction: column;
 }
@@ -248,7 +248,7 @@ body {
 /*BUTTON SIGN IN*/
 .sign-in-nav {
   display: flex;
-  margin-top: 340px;
+  margin-top: 348px;
   margin-left: 490px;
   position: absolute;
 }
