@@ -38,13 +38,336 @@
 }
 
 .navigation-container .profile-container {
+  height: 50px;
+  width: auto;
   background: #ffffff;
   display: flex;
   padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 0.9em;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .navigation-container .profile-container h4 {
-  padding-top: 0.9em;
+  padding-top: 0em;
   padding-left: 0.5em;
+}
+
+.navigation-container .profile-container img {
+  margin-top: -0.5em;
+}
+
+.navigation-container .profile-container .profile-name-container h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.navigation-container .profile-container .profile-icon-container img {
+  width: 35px;
+  height: 35px;
+}
+
+/* Banner */
+.banner-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+  border-radius: 10px;
+}
+
+.banner-container .banner-img img {
+  width: 1400px;
+  height: 595px;
+}
+
+/* content */
+.header-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 100px;
+  margin-left: 90px;
+  margin-bottom: 1em;
+}
+
+.header-container h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.headerLine-container {
+  position: absolute;
+  left: 4%;
+}
+
+.headerLine-container img {
+  height: auto;
+  width: auto;
+}
+
+/* Course Tiles */
+.box {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #056488;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 100px;
+  width: 450px;
+  height: 330px;
+  border-radius: 20px;
+}
+
+.img-course-container {
+  position: absolute;
+  top: -20%;
+  left: 2%;
+}
+
+.img-course-container img {
+  height: 130px;
+  width: 130px;
+}
+
+.course-user-container {
+  position: absolute;
+  left: 35%;
+  top: 18%;
+  width: 270px;
+}
+
+.course-user-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+.course-title-container {
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  width: 270px;
+}
+
+.course-title-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
+.course-description-container {
+  position: absolute;
+  left: 35%;
+  top: 38%;
+  width: 270px;
+}
+
+.course-description-container p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+/* Course Tiles */
+.box3 {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #056488;
+  flex-direction: column;
+  margin-top: 450px;
+  margin-left: 100px;
+  width: 450px;
+  height: 330px;
+  border-radius: 20px;
+}
+
+.box3 .img-course-container {
+  position: absolute;
+  top: 11%;
+  left: 2%;
+}
+
+.box3 .img-course-container img {
+  height: 130px;
+  width: 130px;
+}
+
+.box3 .course-user-container {
+  position: absolute;
+  left: 35%;
+  top: 18%;
+  width: 270px;
+}
+
+.box3 .course-user-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+.box3 .course-title-container {
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  width: 270px;
+}
+
+.box3 .course-title-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
+.box3 .course-description-container {
+  position: absolute;
+  left: 35%;
+  top: 38%;
+  width: 270px;
+}
+
+.box3 .course-description-container p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+/* Course Tiles */
+.box2 {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #056488;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 590px;
+  width: 450px;
+  height: 330px;
+  border-radius: 20px;
+}
+
+.box2 .img-course-container {
+  position: absolute;
+  top: 11%;
+  left: 2%;
+}
+
+.box2 .img-course-container img {
+  height: 130px;
+  width: 130px;
+}
+
+.box2 .course-user-container {
+  position: absolute;
+  left: 35%;
+  top: 18%;
+  width: 270px;
+}
+
+.box2 .course-user-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+.box2 .course-title-container {
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  width: 270px;
+}
+
+.box2 .course-title-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
+.box2 .course-description-container {
+  position: absolute;
+  left: 35%;
+  top: 38%;
+  width: 270px;
+}
+
+.box2 .course-description-container p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+/* Course Tiles */
+.box4 {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #056488;
+  flex-direction: column;
+  margin-top: 450px;
+  margin-left: 590px;
+  width: 450px;
+  height: 330px;
+  border-radius: 20px;
+}
+
+.box4 .img-course-container {
+  position: absolute;
+  top: 11%;
+  left: 2%;
+}
+
+.box4 .img-course-container img {
+  height: 130px;
+  width: 130px;
+}
+
+.box4 .course-user-container {
+  position: absolute;
+  left: 35%;
+  top: 18%;
+  width: 270px;
+}
+
+.box4 .course-user-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+.box4 .course-title-container {
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  width: 270px;
+}
+
+.box4 .course-title-container span {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
+.box4 .course-description-container {
+  position: absolute;
+  left: 35%;
+  top: 38%;
+  width: 270px;
+}
+
+.box4 .course-description-container p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #FFFFFF;
 }
