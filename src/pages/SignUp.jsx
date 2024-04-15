@@ -11,9 +11,10 @@ import "../pages/signUp.css";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
-  const { createUser } = UserAuth();
+  const { createUser } = UserAuth();  
   const navigate = useNavigate();
 
   //---------------
@@ -81,6 +82,7 @@ const SignUp = () => {
                 placeholder="Confirm Password"
                 id="confirmpass"
                 name="confirmpass"
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
               <input
