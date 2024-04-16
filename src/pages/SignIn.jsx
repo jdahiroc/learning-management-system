@@ -25,8 +25,8 @@ const SignIn = () => {
       navigate("/homepage");
     } catch (e) {
       console.log(e.message);
+      return setErrMsg(e.message);
     }
-    return setErrMsg("Something went wrong!");
   };
 
   return (
@@ -68,7 +68,10 @@ const SignIn = () => {
             </div>
             <div className="sign-up-nav">
               <p>
-                Don&#39;t have an account? <Link className="sign-up-link" to={"/signup"}>Sign up.</Link>
+                Don&#39;t have an account?{" "}
+                <Link className="sign-up-link" to={"/signup"}>
+                  Sign up.
+                </Link>
               </p>
             </div>
             <div className="submit-container">
