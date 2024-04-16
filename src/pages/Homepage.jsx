@@ -6,7 +6,7 @@ import headerLine from "../assets/headerLine.png";
 import courseLogo from "../assets/CourseLogo.png";
 
 //css
-import "../pages/homepage.css";
+import "../styles/homepage.css";
 
 const Homepage = () => {
   return (

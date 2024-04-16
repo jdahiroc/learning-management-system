@@ -3,7 +3,7 @@ import logoBrand from "../assets/LOGOBRAND.png";
 import userIcon from "../assets/MaleUser.png";
 
 //css
-import "../pages/addCourse.css";
+import "../styles/addCourse.css";
 
 const AddCourse = () => {
   return (

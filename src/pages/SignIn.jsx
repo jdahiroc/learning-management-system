@@ -3,7 +3,7 @@ import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 
 // CSS
-import "./signIn.css";
+import "../styles/signIn.css";
 
 // img
 import loginImg from "../assets/signinImage.png";

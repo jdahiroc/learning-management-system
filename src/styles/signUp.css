@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 body {
   background-color: #e9eef6;
@@ -13,61 +12,39 @@ body {
   border-radius: 20px;
 }
 
-/* Error Message */
-.errmsg {
-  background-color: lightpink;
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 2%;
-  left: 16%;
-  width: 67%;
-}
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 570px;
+  height: 100vh;
 }
 
 .box img {
   position: absolute;
-  width: 350px;
-  height: 570px;
-  border-radius: 20px;
-  top: 100px;
-}
-
-/* inputs */
-
-.inputs {
+  width: 450px;
+  height: 600px;
   display: flex;
-  flex-direction: column;
+  border-radius: 20px;
+  top: 11.3%;
 }
 
 #sign_in {
   position: absolute;
   color: black;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins";
   font-size: 20px;
-  font-weight: 500;
   margin: 0;
-  left: 55%;
+  left: 59%;
   top: 18%;
 }
 
 #sign_up {
   position: absolute;
   color: black;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins";
   font-size: 20px;
-  font-weight: 500;
   margin: 0;
-  left: 62%;
+  left: 66%;
   top: 18%;
 }
 /*LINE FOR SIGN UP*/
@@ -75,9 +52,9 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -2px;
   width: 100%;
-  height: 3px;
+  height: 2.5px;
   background-color: #056488;
 }
 /*LINE FOR SIGN UP*/
@@ -88,14 +65,13 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
+  background-color: #f7f7f7;
   width: 150px;
   height: 30px;
-  top: 27%;
-  left: 49%;
+  top: 29%;
+  left: 54%;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
   padding-left: 10px;
 }
 
@@ -104,14 +80,13 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
+  background-color: #f7f7f7;
   width: 150px;
   height: 30px;
-  top: 27%;
-  left: 62.6%;
+  top: 29%;
+  left: 66%;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
   padding-left: 10px;
 }
 
@@ -120,14 +95,13 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
-  width: 350px;
+  background-color: #f7f7f7;
+  width: 335px;
   height: 30px;
-  top: 35%;
-  left: 49%;
+  top: 37%;
+  left: 54%;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
   padding-left: 10px;
 }
 
@@ -136,14 +110,13 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
-  width: 350px;
+  background-color: #f7f7f7;
+  width: 335px;
   height: 30px;
-  top: 43%;
-  left: 49%;
+  top: 45%;
+  left: 54%;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
   padding-left: 10px;
 }
 
@@ -152,14 +125,13 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
-  width: 350px;
+  background-color: #f7f7f7;
+  width: 335px;
   height: 30px;
-  top: 51%;
-  left: 49%;
+  top: 53%;
+  left: 54%;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
   padding-left: 10px;
 }
 
@@ -168,39 +140,14 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
-  width: 350px;
+  background-color: #f7f7f7;
+  width: 335px;
   height: 30px;
-  top: 59%;
-  left: 49%;
+  top: 61%;
+  left: 54%;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
   padding-left: 10px;
-}
-
-#fname:focus {
-  background-color: #ffffff;
-}
-
-#lname:focus {
-  background-color: #ffffff;
-}
-
-#email:focus {
-  background-color: #ffffff;
-}
-
-#password:focus {
-  background-color: #ffffff;
-}
-
-#confirmpass:focus {
-  background-color: #ffffff;
-}
-
-#contactnum:focus {
-  background-color: #ffffff;
 }
 /*MGA TEXT FIELDS*/
 
@@ -210,13 +157,13 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
+  background-color: #f7f7f7;
   font-family: "Poppins";
   opacity: 70%;
   width: 150px;
   height: 30px;
-  top: 67%;
-  left: 49%;
+  top: 69%;
+  left: 54%;
   padding-left: 10px;
 }
 
@@ -225,45 +172,18 @@ body {
   border-radius: 5px;
   border: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-color: #edecec;
+  background-color: #f7f7f7;
   font-family: "Poppins";
   opacity: 70%;
-  width: 201px;
+  width: 155px;
   height: 30px;
-  top: 67%;
-  left: 60%;
+  top: 69%;
+  left: 66%;
   padding-left: 10px;
 }
-
-#gender:focus {
-  background-color: #ffffff;
-}
-
-#usertype:focus {
-  background-color: #ffffff;
-}
-
 /*MGA DROPDOWN*/
 
 /*BUTTON SIGN IN*/
-.sign-in-nav {
-  display: flex;
-  margin-top: 348px;
-  margin-left: 490px;
-  position: absolute;
-}
-
-.sign-in-nav p {
-  text-decoration: none;
-  font-size: 15px;
-  opacity: 70%;
-}
-
-.sign-in-nav p .signIn-Link {
-  text-decoration: none;
-  color: #056488;
-}
-
 #butt_signin {
   position: absolute;
   background-color: #056488;
@@ -276,8 +196,7 @@ body {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   width: 250px;
   height: 40px;
-  top: 80%;
-  left: 53%;
-  cursor: pointer;
+  top: 79%;
+  left: 57%;
 }
 /*BUTTON SIGN IN*/

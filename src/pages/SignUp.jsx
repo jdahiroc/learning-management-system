@@ -6,15 +6,14 @@ import { UserAuth } from "../context/AuthContext";
 import registerImg from "../assets/signUpImage.png";
 
 //css link
-import "../pages/signUp.css";
+import "../styles/signUp.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
-  const { createUser } = UserAuth();  
+  const { createUser } = UserAuth();
   const navigate = useNavigate();
 
   //---------------
@@ -82,7 +81,6 @@ const SignUp = () => {
                 placeholder="Confirm Password"
                 id="confirmpass"
                 name="confirmpass"
-                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
               <input
