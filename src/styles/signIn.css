@@ -65,7 +65,7 @@ body {
 /* underline */
 .header-text-container .underline {
   position: absolute;
-  top: 26%;
+  top: 23%;
   width: 90px;
   height: 5px;
   background-color: #056488;
