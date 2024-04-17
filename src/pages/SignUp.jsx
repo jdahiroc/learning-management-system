@@ -54,17 +54,15 @@ const SignUp = () => {
 
     // Add a new document with a generated id.
     try {
-      // Create user in Firebase Authentication
       const authUserCredential = await createUser(email, password);
       const { uid } = authUserCredential.user;
 
-      // Save the document but using the UID on authenticated user
+      // Save the document with the Same UID
       await setDoc(doc(db, "users", uid), newUser);
-
-      navigate("/homepage");
-    } catch {
-      setErrMsg(e.message);
-      console.log(e.message);
+      navigate("/");
+    } catch (error) {
+      console.error("Firebase Authentication Error:", error.message);
+      setErrMsg("Failed to sign up. Please try again.");
     }
   };
 
@@ -72,7 +70,7 @@ const SignUp = () => {
     <>
       <div className="error-container-login">
         {/* error message */}
-        <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+        <p className={errMsg ? "errmsg" : ""} aria-live="assertive">
           {errMsg}
         </p>
       </div>
