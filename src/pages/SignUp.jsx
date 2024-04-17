@@ -6,10 +6,10 @@ import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 //image link
-import registerImg from "../assets/signUpImage.png";
+import registerImg from "../assets/signupImage.png";
 
 //css link
-import "../styles/signUp.css";
+import "../styles/signup.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -76,92 +76,108 @@ const SignUp = () => {
           {errMsg}
         </p>
       </div>
-      <div className="container">
-        <div className="box">
-          <h1 id="sign_in">SIGN IN</h1>
-          <h1 id="sign_up">SIGN UP</h1>
-          <div className="inputs">
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="First Name"
-                id="fname"
-                name="fname"
-                onChange={(e) => setFname(e.target.value)}
-                required
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                id="lname"
-                name="lname"
-                onChange={(e) => setLname(e.target.value)}
-                required
-              />
-              <input
-                type="text"
-                placeholder="Email Address"
-                id="email"
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                id="password"
-                name="password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                id="confirmpass"
-                name="confirmpass"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-              <input
-                type="text"
-                placeholder="Contact Number"
-                id="contactnum"
-                name="contactnum"
-                onChange={(e) => setContactNum(e.target.value)}
-              />
-
-              <select
-                name="Gender"
-                id="gender"
-                value={gender ? "Male" : "Female"}
-                onChange={handleGender}
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-
-              <select
-                name="Student"
-                id="usertype"
-                value={userType ? "Student" : "Teacher"}
-                onChange={handleUserType}
-              >
-                <option value="Student">Student</option>
-                <option value="Teacher">Teacher</option>
-              </select>
-
-              <div className="sign-up-nav">
-                <p>
-                  Already have an account?{" "}
-                  <Link className="signIn-Link" to={"/"}>
-                    Sign in.
-                  </Link>
-                </p>
-              </div>
-              <button id="butt_signin">SIGN UP</button>
-            </form>
-          </div>
+      <div className="signUp-container">
+        {/* image */}
+        <div className="signUp-side-img-container">
           <img src={registerImg} alt="IMAGE" />
+        </div>
+        {/* header */}
+        <div className="headerText-container">
+          <div className="sign-In-container">
+            <h2>SIGN IN</h2>
+          </div>
+          <div className="sign-Up-container">
+            <h2>SIGN UP</h2>
+          </div>
+          {/* underline */}
+          <div className="underline"></div>
+        </div>
+        {/* inputs */}
+        <div className="inputss-container">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="First Name"
+              name="fname"
+              className="fname"
+              onChange={(e) => setFname(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lname"
+              className="lname"
+              onChange={(e) => setLname(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Email Address"
+              name="email"
+              className="email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              className="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="confirmpass"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Contact Number"
+              id="contactnum"
+              name="contactnum"
+              className="contactnum"
+              onChange={(e) => setContactNum(e.target.value)}
+            />
+
+            {/* gender */}
+            <select
+              name="Gender"
+              className="gender"
+              value={gender ? "Male" : "Female"}
+              onChange={handleGender}
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+
+            {/* usertype */}
+            <select
+              name="usertype"
+              className="usertype"
+              value={userType ? "Student" : "Teacher"}
+              onChange={handleUserType}
+            >
+              <option value="Student">Student</option>
+              <option value="Teacher">Teacher</option>
+            </select>
+            {/* sign-in */}
+            <div className="signIn-nav">
+              <p>
+                Already have an account?{" "}
+                <Link className="signIn-Link" to={"/"}>
+                  Sign in.
+                </Link>
+              </p>
+            </div>
+            {/* sign up button */}
+            <div className="submitContainer">
+              <button>SIGN UP</button>
+            </div>
+          </form>
         </div>
       </div>
     </>
