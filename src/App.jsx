@@ -6,8 +6,8 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Homepage from "./pages/Homepage";
 
-// CSS
-import "./App.css";
+
+
 
 function App() {
   return (

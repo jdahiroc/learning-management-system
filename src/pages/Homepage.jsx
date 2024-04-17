@@ -5,6 +5,8 @@ import bannerImg from "../assets/banner.png";
 import headerLine from "../assets/headerLine.png";
 import courseLogo from "../assets/CourseLogo.png";
 
+// import { Link } from "react-router-dom";
+
 //css
 import "../styles/homepage.css";
 
@@ -24,6 +26,7 @@ const Homepage = () => {
             <li>CONTACT US</li>
           </ul>
         </div>
+        {/* Navigation Profile */}
         <div className="profile-container">
           <div className="profile-icon-container">
             <img src={userIcon} alt="profile-icon" />
@@ -32,6 +35,11 @@ const Homepage = () => {
             <h4>Admin</h4>
           </div>
         </div>
+      </div>
+
+      {/* Profile Modal */}
+      <div className="ovelay-profileIcon">
+        
       </div>
 
       {/* Banner */}
@@ -69,6 +77,7 @@ const Homepage = () => {
           </p>
         </div>
       </div>
+     
 
       <div className="box2">
         <div className="img-course-container">

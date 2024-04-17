@@ -8,8 +8,14 @@
 
 /* Navigations */
 .navigation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   background: #53bde5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .navigation-container .logo-container {
@@ -37,16 +43,22 @@
   font-weight: 500;
 }
 
+.navigation-container .navigation-controls ul li:hover {
+  cursor: pointer;
+  color: #e9eef6;
+  border-radius: 5px;
+}
+
 .navigation-container .profile-container {
   height: 50px;
-  width: auto;
+  width: 130px;
   background: #ffffff;
   display: flex;
   padding-top: 1em;
   padding-left: 1em;
   padding-right: 1em;
   margin-top: 0.9em;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -74,6 +86,7 @@
   display: flex;
   justify-content: center;
   margin-top: 0.5em;
+  padding-top: 80px;
   border-radius: 10px;
 }
 
@@ -122,7 +135,7 @@
 
 .img-course-container {
   position: absolute;
-  top: -20%;
+  top: 11%;
   left: 2%;
 }
 
@@ -141,7 +154,7 @@
 .course-user-container span {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .course-title-container {
@@ -155,7 +168,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 30px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .course-description-container {
@@ -169,7 +182,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* Course Tiles */
@@ -207,7 +220,7 @@
 .box3 .course-user-container span {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .box3 .course-title-container {
@@ -221,7 +234,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 30px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .box3 .course-description-container {
@@ -235,7 +248,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* Course Tiles */
@@ -274,7 +287,7 @@
 .box2 .course-user-container span {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .box2 .course-title-container {
@@ -288,7 +301,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 30px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .box2 .course-description-container {
@@ -302,7 +315,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* Course Tiles */
@@ -341,7 +354,7 @@
 .box4 .course-user-container span {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .box4 .course-title-container {
@@ -355,7 +368,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 30px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .box4 .course-description-container {
@@ -369,5 +382,5 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
 }

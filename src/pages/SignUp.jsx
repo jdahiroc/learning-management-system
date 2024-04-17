@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 
-import {setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 //image link
@@ -25,16 +25,15 @@ const SignUp = () => {
   const { createUser } = UserAuth();
   const navigate = useNavigate();
 
-
-   // Function for gender selection
-   const handleGender = (e) => {
-    setGender(e.target.value === 'Male');
+  // Function for gender selection
+  const handleGender = (e) => {
+    setGender(e.target.value === "Male");
   };
 
   // Function for user type selection
   const handleUserType = (e) => {
-    setUserType(e.target.value === 'Student')
-  }
+    setUserType(e.target.value === "Student");
+  };
 
   // Handle Submit
   const handleSubmit = async (e) => {
@@ -48,7 +47,7 @@ const SignUp = () => {
       password,
       confirmPassword,
       contactNum,
-      gender: gender ? 'Male' : 'Female',
+      gender: gender ? "Male" : "Female",
       userType,
       createdOn: serverTimestamp(),
     };
@@ -59,8 +58,8 @@ const SignUp = () => {
       const authUserCredential = await createUser(email, password);
       const { uid } = authUserCredential.user;
 
-       // Save the document but using the UID on authenticated user
-       await setDoc(doc(db, "users", uid), newUser);
+      // Save the document but using the UID on authenticated user
+      await setDoc(doc(db, "users", uid), newUser);
 
       navigate("/homepage");
     } catch {
@@ -131,17 +130,27 @@ const SignUp = () => {
                 onChange={(e) => setContactNum(e.target.value)}
               />
 
-              <select name="Gender" id="gender" value={gender ? 'Male' : 'Female'} onChange={handleGender}>
+              <select
+                name="Gender"
+                id="gender"
+                value={gender ? "Male" : "Female"}
+                onChange={handleGender}
+              >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
 
-              <select name="Student" id="usertype" value={userType ? 'Student' : 'Teacher'} onChange={handleUserType}>
+              <select
+                name="Student"
+                id="usertype"
+                value={userType ? "Student" : "Teacher"}
+                onChange={handleUserType}
+              >
                 <option value="Student">Student</option>
                 <option value="Teacher">Teacher</option>
               </select>
 
-              <div className="sign-in-nav">
+              <div className="sign-up-nav">
                 <p>
                   Already have an account?{" "}
                   <Link className="signIn-Link" to={"/"}>
