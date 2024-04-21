@@ -11,7 +11,6 @@ import registerImg from "../assets/signupImage.png";
 //css link
 import "../styles/signup.css";
 
-
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +19,7 @@ const SignUp = () => {
   const [lName, setLname] = useState("");
   const [contactNum, setContactNum] = useState("");
   const [gender, setGender] = useState(false);
-  const [userType, setUserType] = useState("");
+  const [userType, setUserType] = useState("Student");
   const [errMsg, setErrMsg] = useState("");
 
   const { createUser } = UserAuth();
@@ -56,10 +55,13 @@ const SignUp = () => {
     // Add a new document with a generated id.
     try {
       const authUserCredential = await createUser(email, password);
-      const { uid } = authUserCredential.user;
+      const { user } = authUserCredential;
+
+      // Set displayName in user object
+      user.displayName = fName;
 
       // Save the document with the Same UID
-      await setDoc(doc(db, "users", uid), newUser);
+      await setDoc(doc(db, "users", user.uid), newUser);
 
       // Redirect based on user type
       if (userType === "Student") {
@@ -67,7 +69,6 @@ const SignUp = () => {
       } else if (userType === "Teacher") {
         navigate("/admin");
       }
-      
     } catch (error) {
       console.error("Firebase Authentication Error:", error.message);
       setErrMsg("Failed to sign up. Please try again.");
@@ -133,6 +134,7 @@ const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+
             <input
               type="password"
               placeholder="Confirm Password"
@@ -140,6 +142,7 @@ const SignUp = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+
             <input
               type="text"
               placeholder="Contact Number"
