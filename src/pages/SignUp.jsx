@@ -11,6 +11,7 @@ import registerImg from "../assets/signupImage.png";
 //css link
 import "../styles/signup.css";
 
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +33,7 @@ const SignUp = () => {
 
   // Function for user type selection
   const handleUserType = (e) => {
-    setUserType(e.target.value === "Student");
+    setUserType(e.target.value);
   };
 
   // Handle Submit
@@ -60,8 +61,13 @@ const SignUp = () => {
       // Save the document with the Same UID
       await setDoc(doc(db, "users", uid), newUser);
 
-      // when successful redirect to sign in
-      navigate("/");
+      // Redirect based on user type
+      if (userType === "Student") {
+        navigate("/homepage");
+      } else if (userType === "Teacher") {
+        navigate("/admin");
+      }
+      
     } catch (error) {
       console.error("Firebase Authentication Error:", error.message);
       setErrMsg("Failed to sign up. Please try again.");
@@ -158,7 +164,7 @@ const SignUp = () => {
             <select
               name="usertype"
               className="usertype"
-              value={userType ? "Student" : "Teacher"}
+              value={userType}
               onChange={handleUserType}
             >
               <option value="Student">Student</option>
