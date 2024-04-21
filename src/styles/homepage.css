@@ -51,15 +51,19 @@
 
 .navigation-container .profile-container {
   height: 50px;
-  width: 130px;
+  width: auto;
   background: #ffffff;
   display: flex;
   padding-top: 1em;
-  padding-left: 1em;
+  padding-left: 0.6em;
   padding-right: 1em;
   margin-top: 0.9em;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.navigation-container .profile-container:hover {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navigation-container .profile-container h4 {
@@ -81,6 +85,112 @@
   height: 35px;
 }
 
+/* Profile Modal */
+
+.overlay-profileIcon {
+  display:none;
+  position: absolute;
+  left: 72%;
+  top: 10.5%;
+  background-color: #f3f7ff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  max-width: 350px;
+  max-height: 305px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: none;
+}
+
+.show {
+  display: block;
+}
+
+.close-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+  margin-right: 1.5em;
+}
+
+.profile-closebtn {
+  border: none;
+  background-color: #f3f7ff;
+  color: #898989;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.profile-closebtn:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.profileIcon-modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileIcon-modal-container .profile-icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profileIcon-modal-container .profile-icon-container img {
+  height: 84px;
+  width: 84px;
+}
+
+.profileIcon-modal-container .userName-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.profileIcon-modal-container .userName-container h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.profileIcon-modal-container .email-container {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  margin-top: 0.3em;
+}
+
+.profileIcon-modal-container .email-container p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.profileIcon-modal-container .logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.profileIcon-modal-container .logout-container button {
+  padding: 10px 65px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: #53bde5;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profileIcon-modal-container .logout-container button:hover {
+  background-color: #53bde5;
+  color: #ffffff;
+}
+
 /* Banner */
 .banner-container {
   display: flex;
@@ -100,7 +210,7 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 100px;
-  margin-left: 90px;
+  margin-left: -80px;
   margin-bottom: 1em;
 }
 
@@ -122,12 +232,8 @@
 /* Course Tiles */
 .box {
   position: absolute;
-  display: flex;
-  justify-content: flex-start;
   background-color: #056488;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-left: 100px;
+  margin: 1.5em;
   width: 450px;
   height: 330px;
   border-radius: 20px;
@@ -145,9 +251,9 @@
 }
 
 .course-user-container {
-  position: absolute;
-  left: 35%;
-  top: 18%;
+  display: flex;
+  margin-left: 160px;
+  margin-top: 60px;
   width: 270px;
 }
 
@@ -158,9 +264,8 @@
 }
 
 .course-title-container {
-  position: absolute;
-  left: 35%;
-  top: 25%;
+  display: flex;
+  margin-left: 160px;
   width: 270px;
 }
 
@@ -172,9 +277,9 @@
 }
 
 .course-description-container {
-  position: absolute;
-  left: 35%;
-  top: 38%;
+  display: flex;
+  margin-left: 160px;
+  margin-top: 0.5em;
   width: 270px;
 }
 
@@ -188,63 +293,58 @@
 /* Course Tiles */
 .box3 {
   position: absolute;
-  display: flex;
-  justify-content: flex-start;
   background-color: #056488;
-  flex-direction: column;
-  margin-top: 450px;
-  margin-left: 100px;
+  margin: 1.5em 600px;
   width: 450px;
   height: 330px;
   border-radius: 20px;
 }
 
-.box3 .img-course-container {
+.img-course-container {
   position: absolute;
   top: 11%;
   left: 2%;
 }
 
-.box3 .img-course-container img {
+.img-course-container img {
   height: 130px;
   width: 130px;
 }
 
-.box3 .course-user-container {
-  position: absolute;
-  left: 35%;
-  top: 18%;
+.course-user-container {
+  display: flex;
+  margin-left: 160px;
+  margin-top: 60px;
   width: 270px;
 }
 
-.box3 .course-user-container span {
+.course-user-container span {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   color: #ffffff;
 }
 
-.box3 .course-title-container {
-  position: absolute;
-  left: 35%;
-  top: 25%;
+.course-title-container {
+  display: flex;
+  margin-left: 160px;
   width: 270px;
 }
 
-.box3 .course-title-container span {
+.course-title-container span {
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 30px;
   color: #ffffff;
 }
 
-.box3 .course-description-container {
-  position: absolute;
-  left: 35%;
-  top: 38%;
+.course-description-container {
+  display: flex;
+  margin-left: 160px;
+  margin-top: 0.5em;
   width: 270px;
 }
 
-.box3 .course-description-container p {
+.course-description-container p {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
