@@ -8,7 +8,7 @@ import Homepage from "./pages/Homepage";
 import ProtectedRoute from "../src/ProtectedRoutes/ProtectedRoute";
 
 // Admin components
-// TODO add components for admin pages
+// ~ ~ TODO add components for admin pages
 
 function App() {
   return (
@@ -18,11 +18,11 @@ function App() {
           <Routes>
             <Route path="/" index element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            
+
             {/* User Routes */}
             {/* Normal User Homepage */}
             <Route
-              path="/homepage"
+              path="/home"
               element={
                 <ProtectedRoute>
                   <Homepage />
