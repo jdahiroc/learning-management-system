@@ -1,0 +1,497 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Duru+Sans&family=Inter:wght@100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Navigations */
+.navigation-container {
+  display: flex;
+  background: #53bde5;
+}
+
+.navigation-container .logo-container {
+  justify-content: flex-start;
+  margin-top: 0.5em;
+}
+
+.navigation-container .logo-container img {
+  width: auto;
+  height: 65px;
+}
+
+.navigation-container .navigation-controls ul {
+  list-style: none;
+  margin-left: 600px;
+  margin-top: 1.7em;
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation-container .navigation-controls ul li {
+  margin-right: 2.5em;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navigation-container .profile-container {
+  height: 50px;
+  width: auto;
+  background: #ffffff;
+  display: flex;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 0.9em;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.navigation-container .profile-container h4 {
+  padding-top: 0em;
+  padding-left: 0.5em;
+}
+
+.navigation-container .profile-container img {
+  margin-top: -0.5em;
+}
+
+.navigation-container .profile-container .profile-name-container h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.navigation-container .profile-container .profile-icon-container img {
+  width: 35px;
+  height: 35px;
+}
+
+/* Profile Modal */
+.overlay-profileIcon {
+  /* display:none; */
+  position: absolute;
+  left: 72%;
+  top: 10.5%;
+  background-color: #f3f7ff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  max-width: 350px;
+  max-height: 305px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: none;
+}
+
+.show {
+  display: block;
+}
+
+.close-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+  margin-right: 1.5em;
+}
+
+.profile-closebtn {
+  border: none;
+  background-color: #f3f7ff;
+  color: #898989;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.profile-closebtn:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.profileIcon-modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileIcon-modal-container .profile-icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profileIcon-modal-container .profile-icon-container img {
+  height: 84px;
+  width: 84px;
+}
+
+.profileIcon-modal-container .userName-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.profileIcon-modal-container .userName-container h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.profileIcon-modal-container .email-container {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  margin-top: 0.3em;
+}
+
+.profileIcon-modal-container .email-container p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.profileIcon-modal-container .logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.profileIcon-modal-container .logout-container button {
+  padding: 10px 65px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: #53bde5;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profileIcon-modal-container .logout-container button:hover {
+  background-color: #53bde5;
+  color: #ffffff;
+}
+
+
+/*---------- Contents ----------*/
+.course_content-container {
+  display: flex;
+  width: 100%;
+  max-width: 850px;
+  margin-top: 3.5em;
+  margin-left: 6em;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-header {
+  position: relative;
+  left: 25px;
+  width: 100%;
+  height: 2px;
+  margin-top: 1.5em;
+}
+
+.course_underline {
+  width: 100%;
+  max-width: 990px;
+  height: 2px;
+  background-color: #000000;
+  margin-right: 140px;
+  margin-top: 1.3em;
+}
+
+.course-header h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.course_materials tr td button {
+  background-color: #74adc3;
+  font-size: 20px;
+  color: white;
+  border-style: none;
+  border-radius: 15px;
+  width: 1200px;
+  height: 62px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.course_materials {
+  margin-top: 0;
+}
+
+.course_materials table tr td {
+  padding: 10px;
+}
+
+.picture {
+  background-color: #056488;
+  width: 1350px;
+  height: 250px;
+  border-radius: 30px;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+
+/*Banner*/
+.course_banner {
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  margin-top: 60px;
+  background-color: #056588c3;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  min-width: 600px;
+  max-width: 1200px;
+  height: 250px;
+  max-height: 250px;
+}
+.course_logo {
+  height: 180px;
+  width: 180px;
+  position: absolute;
+  left: 16%;
+  top: 20%;
+}
+
+/*course logo text */
+.course_text {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+/*course logo text2 */
+.course_text2 {
+  position: absolute;
+  top: 33%;
+  left: 29.9%;
+  color: #0f323f;
+  font-family: "Inter", sans-serif;
+  font-weight: 1000;
+  font-size: 50px;
+}
+
+/*course logo description text3 */
+.course_text3 {
+  position: absolute;
+  top: 31%;
+  left: 320px;
+  transform: translateY(-50%);
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+}
+
+/* table */
+td {
+  padding: 5px;
+}
+
+.course_materials {
+  margin-top: 10px;
+}
+
+/* add button */
+.addbutt_container {
+  position: absolute;
+  left: 88%;
+  top: 5%;
+  cursor: pointer;
+}
+
+/* lesson1 image */
+.lesson_image {
+  position: relative;
+  display: flex;
+  left: 20px;
+  height: 56px;
+  width: 56px;
+}
+
+/* lesson1 dot */
+.lesson1_dot {
+  position: absolute;
+  top: 67.7%;
+  left: 88%;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+/*lesson1 texts */
+.lesson1_text {
+  position: absolute;
+  top: 66.5%;
+  left: 220px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+.lesson1_text2 {
+  position: absolute;
+  top: 70%;
+  left: 220px;
+  color: rgb(75, 75, 75);
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+/* lesson2 image */
+.lesson_image2 {
+  position: relative;
+  display: flex;
+  left: 20px;
+  height: 56px;
+  width: 56px;
+}
+
+/* lesson2 dot */
+.lesson2_dot {
+  position: absolute;
+  top: 78.5%;
+  left: 88%;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+/*lesson2 texts */
+.lesson2_text {
+  position: absolute;
+  top: 77.3%;
+  left: 220px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+.lesson2_text2 {
+  position: absolute;
+  top: 80.8%;
+  left: 220px;
+  color: rgb(75, 75, 75);
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+/* lesson3 image */
+.lesson_image3 {
+  position: relative;
+  display: flex;
+  left: 20px;
+  height: 56px;
+  width: 56px;
+}
+
+/* lesson3 dot */
+.lesson3_dot {
+  position: absolute;
+  top: 89.4%;
+  left: 88%;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+/*lesson3 texts */
+.lesson3_text {
+  position: absolute;
+  top: 88%;
+  left: 220px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+.lesson3_text2 {
+  position: absolute;
+  top: 91.5%;
+  left: 220px;
+  color: rgb(75, 75, 75);
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+/* lesson4 image */
+.lesson_image4 {
+  position: relative;
+  display: flex;
+  left: 20px;
+  height: 56px;
+  width: 56px;
+}
+
+/* lesson4 dot */
+.lesson4_dot {
+  position: absolute;
+  top: 100%;
+  left: 88%;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+/*lesson4 texts */
+.lesson4_text {
+  position: absolute;
+  top: 98.8%;
+  left: 220px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+.lesson4_text2 {
+  position: absolute;
+  top: 102.5%;
+  left: 220px;
+  color: rgb(75, 75, 75);
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+/* lesson5 image */
+.lesson_image5 {
+  position: relative;
+  display: flex;
+  left: 20px;
+  height: 56px;
+  width: 56px;
+}
+
+/* lesson5 dot */
+.lesson5_dot {
+  position: absolute;
+  top: 111%;
+  left: 88%;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+/*lesson5 texts */
+.lesson5_text {
+  position: absolute;
+  top: 110%;
+  left: 220px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+.lesson5_text2 {
+  position: absolute;
+  top: 113.5%;
+  left: 220px;
+  font-size: 13px;
+  color: rgb(75, 75, 75);
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
