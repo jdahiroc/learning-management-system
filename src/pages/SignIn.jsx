@@ -53,7 +53,7 @@ const SignIn = () => {
 
       // if authentication is successful navigate user to homepage
       // but based on user role
-      navigate("/homepage");
+      navigate("/home");
     } catch (e) {
       console.log(e.message);
       return setErrMsg(e.message);

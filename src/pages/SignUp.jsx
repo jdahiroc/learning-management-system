@@ -65,7 +65,7 @@ const SignUp = () => {
 
       // Redirect based on user type
       if (userType === "Student") {
-        navigate("/homepage");
+        navigate("/home");
       } else if (userType === "Teacher") {
         navigate("/admin");
       }
