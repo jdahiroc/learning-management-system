@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
+import { getDocs, collection, query, where } from "firebase/firestore"; // Import Firestore functions
+import { db } from "../firebase";
 
 // CSS
 import "../styles/signIn.css";
@@ -10,17 +12,47 @@ import loginImg from "../assets/signinImage.png";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { signIn } = UserAuth();
+  const { signIn, updateProfile } = UserAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
+  // Function to fetch full name from Firestore based on email
+  const fetchFullNameByEmail = async (email) => {
+    try {
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("email", "==", email));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        throw new Error("User not found");
+      }
+
+      // Assuming there's only one user with the given email
+      const userData = querySnapshot.docs[0].data();
+      return userData.fName;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrMsg("");
     try {
+      // Reference for email/password to authenticate user account
       await signIn(email, password);
+
+      // Fetch full name from Firestore based on email
+      const fName = await fetchFullNameByEmail(email);
+
+      // Update user profile with full name
+      await updateProfile(fName);
+
+      // if authentication is successful navigate user to homepage
+      // but based on user role
       navigate("/homepage");
     } catch (e) {
       console.log(e.message);
