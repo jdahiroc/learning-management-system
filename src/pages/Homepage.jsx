@@ -5,12 +5,35 @@ import bannerImg from "../assets/banner.png";
 import headerLine from "../assets/headerLine.png";
 import courseLogo from "../assets/CourseLogo.png";
 
-// import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+import { UserAuth } from "../context/AuthContext";
 
 //css
 import "../styles/homepage.css";
 
 const Homepage = () => {
+  const { user, logout } = UserAuth();
+
+   // Modal Function
+   const toggleModal = () => {
+    setModal(!modal);
+  };
+
+   //logout function
+   const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+      console.log("You are logged out!");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+
   return (
     <>
       {/* NAVIGATIONS */}
@@ -32,7 +55,7 @@ const Homepage = () => {
             <img src={userIcon} alt="profile-icon" />
           </div>
           <div className="profile-name-container">
-            <h4>Admin</h4>
+            <h4>{user && user.displayName}</h4>
           </div>
         </div>
       </div>
