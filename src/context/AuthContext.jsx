@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile as firebaseUpdateProfile, // import updateProfile from firebase/auth
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -23,6 +24,10 @@ export const AuthContextProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const updateProfile = (displayName) => {
+    return firebaseUpdateProfile(auth.currentUser, { displayName });
+  };
+
   //logout funtion
   const logout = () => {
     return signOut(auth);
@@ -39,7 +44,9 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+    <UserContext.Provider
+      value={{ user, signIn, updateProfile, createUser, logout }}
+    >
       {children}
     </UserContext.Provider>
   );
