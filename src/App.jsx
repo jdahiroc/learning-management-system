@@ -8,7 +8,7 @@ import Homepage from "./pages/Homepage";
 import ProtectedRoute from "../src/ProtectedRoutes/ProtectedRoute";
 
 // Admin components
-// ~ ~ TODO add components for admin pages
+import CourseSection from "../src/pages/CourseSection";
 
 function App() {
   return (
@@ -29,7 +29,10 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
+            <Route path="/admin"
+            element={<ProtectedRoute>
+              <CourseSection/>
+            </ProtectedRoute>}/>
             {/* Admin Routes */}
           </Routes>
         </AuthContextProvider>
