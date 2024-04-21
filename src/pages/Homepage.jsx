@@ -1,9 +1,10 @@
 // img
 import logoBrand from "../assets/LOGOBRAND.png";
-import userIcon from "../assets/MaleUser.png";
+import userIcon from "../assets/profileIcon.png";
 import bannerImg from "../assets/banner.png";
 import headerLine from "../assets/headerLine.png";
 import courseLogo from "../assets/CourseLogo.png";
+import profileIcon from "../assets/profileIcon.png";
 
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,15 +16,18 @@ import { UserAuth } from "../context/AuthContext";
 import "../styles/homepage.css";
 
 const Homepage = () => {
-  const { user, logout } = UserAuth();
+  const [modal, setModal] = useState(false);
 
-   // Modal Function
-   const toggleModal = () => {
+  const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+
+  // Modal Function
+  const toggleModal = () => {
     setModal(!modal);
   };
 
-   //logout function
-   const handleLogout = async () => {
+  //logout function
+  const handleLogout = async () => {
     try {
       await logout();
       navigate("/");
@@ -32,7 +36,6 @@ const Homepage = () => {
       console.log(e.message);
     }
   };
-
 
   return (
     <>
@@ -50,7 +53,7 @@ const Homepage = () => {
           </ul>
         </div>
         {/* Navigation Profile */}
-        <div className="profile-container">
+        <div onClick={toggleModal} className="profile-container">
           <div className="profile-icon-container">
             <img src={userIcon} alt="profile-icon" />
           </div>
@@ -61,8 +64,28 @@ const Homepage = () => {
       </div>
 
       {/* Profile Modal */}
-      <div className="ovelay-profileIcon">
-        
+      <div className={`overlay-profileIcon  ${modal ? "show" : ""}`}>
+        <div className="close-btn-container">
+          <button className="profile-closebtn" onClick={toggleModal}>
+            &times;
+          </button>
+        </div>
+        <div className="profileIcon-modal-container">
+          <div className="profile-icon-container">
+            <img src={profileIcon} alt="profile-icon" />
+          </div>
+          <div className="userName-container">
+            <h2>{user && user.displayName}</h2>
+          </div>
+          <div className="email-container">
+            <p>{user && user.email}</p>
+          </div>
+          <div className="logout-container">
+            <button onClick={handleLogout} className="logout-btn">
+              LOGOUT
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Banner */}
@@ -100,49 +123,8 @@ const Homepage = () => {
           </p>
         </div>
       </div>
-     
-
-      <div className="box2">
-        <div className="img-course-container">
-          <img src={courseLogo} alt="Course Logo" />
-        </div>
-        <div className="course-user-container">
-          <span>John Mike S. Wayne</span>
-        </div>
-        <div className="course-title-container">
-          <span>Health Course 1</span>
-        </div>
-        <div className="course-description-container">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus animi natus maiores obcaecati incidunt dolore
-            dignissimos mollitia adipisci amet optio. Voluptas, deleniti!
-            Voluptatum repellat maiores temporibus, earum nihil non eos.
-          </p>
-        </div>
-      </div>
 
       <div className="box3">
-        <div className="img-course-container">
-          <img src={courseLogo} alt="Course Logo" />
-        </div>
-        <div className="course-user-container">
-          <span>John Mike S. Wayne</span>
-        </div>
-        <div className="course-title-container">
-          <span>Health Course 1</span>
-        </div>
-        <div className="course-description-container">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus animi natus maiores obcaecati incidunt dolore
-            dignissimos mollitia adipisci amet optio. Voluptas, deleniti!
-            Voluptatum repellat maiores temporibus, earum nihil non eos.
-          </p>
-        </div>
-      </div>
-
-      <div className="box4">
         <div className="img-course-container">
           <img src={courseLogo} alt="Course Logo" />
         </div>
