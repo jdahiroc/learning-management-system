@@ -6,10 +6,8 @@ import headerLine from "../assets/headerLine.png";
 import courseLogo from "../assets/CourseLogo.png";
 import profileIcon from "../assets/profileIcon.png";
 
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 //css
@@ -143,6 +141,7 @@ const Homepage = () => {
           </p>
         </div>
       </div>
+      
     </>
   );
 };
