@@ -29,11 +29,16 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/admin"
-            element={<ProtectedRoute>
-              <CourseSection/>
-            </ProtectedRoute>}/>
+
             {/* Admin Routes */}
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <CourseSection />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </AuthContextProvider>
       </div>
