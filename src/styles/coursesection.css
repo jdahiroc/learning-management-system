@@ -71,8 +71,8 @@
 
 /* Profile Modal */
 .overlay-profileIcon {
-  /* display:none; */
-  position: absolute;
+  display: none;
+  position: fixed;
   left: 72%;
   top: 10.5%;
   background-color: #f3f7ff;
@@ -86,8 +86,69 @@
   overflow: none;
 }
 
+/* modal button for add */
+.overlay-course {
+  display: none;
+  position: absolute;
+  left: 71%;
+  top: 61%;
+  background-color: #f3f7ff;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.147);
+  border-radius: 10px;
+  max-width: 200px;
+  max-height: 75px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: none;
+  font-family: "Inter", sans-serif;
+}
+
 .show {
   display: block;
+}
+
+/* upload buttons */
+.upload_lesson {
+  background-color: #f3f7ff;
+  border: none;
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+}
+
+.upload_assessment {
+  background-color: #f3f7ff;
+  border: none;
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+}
+
+:hover.upload_assessment {
+  background-color: #056488;
+  color: #f3f7ff;
+}
+:hover.upload_lesson {
+  background-color: #056488;
+  color: #f3f7ff;
+}
+
+.course_materials {
+  margin-top: 0;
+}
+
+.course_materials table tr td {
+  padding: 10px;
+}
+
+.picture {
+  background-color: #056488;
+  width: 1350px;
+  height: 250px;
+  border-radius: 30px;
+  margin-top: 40px;
+  margin-left: 50px;
 }
 
 .close-btn-container {
@@ -174,7 +235,6 @@
   color: #ffffff;
 }
 
-
 /*---------- Contents ----------*/
 .course_content-container {
   display: flex;
@@ -209,6 +269,7 @@
   font-size: 25px;
   font-weight: 600;
   white-space: nowrap;
+  width: 25%;
 }
 
 .course_materials tr td button {
@@ -261,7 +322,6 @@
   top: 20%;
 }
 
-/*course logo text */
 .course_text {
   position: absolute;
   top: 30%;
@@ -272,7 +332,6 @@
   font-size: 20px;
 }
 
-/*course logo text2 */
 .course_text2 {
   position: absolute;
   top: 33%;
@@ -283,7 +342,7 @@
   font-size: 50px;
 }
 
-/*course logo description text3 */
+
 .course_text3 {
   position: absolute;
   top: 31%;
@@ -305,9 +364,14 @@ td {
 
 /* add button */
 .addbutt_container {
-  position: absolute;
-  left: 88%;
-  top: 5%;
+  /* position: relative;
+  left: 92%; */
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1.5em;
+}
+
+.addbutt_container:hover {
   cursor: pointer;
 }
 
@@ -323,7 +387,7 @@ td {
 /* lesson1 dot */
 .lesson1_dot {
   position: absolute;
-  top: 67.7%;
+  top: 73%;
   left: 88%;
   height: 25px;
   width: 25px;
@@ -333,14 +397,14 @@ td {
 /*lesson1 texts */
 .lesson1_text {
   position: absolute;
-  top: 66.5%;
+  top: 72%;
   left: 220px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
 }
 .lesson1_text2 {
   position: absolute;
-  top: 70%;
+  top: 76%;
   left: 220px;
   color: rgb(75, 75, 75);
   font-size: 13px;
@@ -360,7 +424,7 @@ td {
 /* lesson2 dot */
 .lesson2_dot {
   position: absolute;
-  top: 78.5%;
+  top: 84%;
   left: 88%;
   height: 25px;
   width: 25px;
@@ -370,14 +434,14 @@ td {
 /*lesson2 texts */
 .lesson2_text {
   position: absolute;
-  top: 77.3%;
+  top: 82.5%;
   left: 220px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
 }
 .lesson2_text2 {
   position: absolute;
-  top: 80.8%;
+  top: 86.5%;
   left: 220px;
   color: rgb(75, 75, 75);
   font-size: 13px;
@@ -397,7 +461,7 @@ td {
 /* lesson3 dot */
 .lesson3_dot {
   position: absolute;
-  top: 89.4%;
+  top: 95%;
   left: 88%;
   height: 25px;
   width: 25px;
@@ -407,14 +471,14 @@ td {
 /*lesson3 texts */
 .lesson3_text {
   position: absolute;
-  top: 88%;
+  top: 93%;
   left: 220px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
 }
 .lesson3_text2 {
   position: absolute;
-  top: 91.5%;
+  top: 97%;
   left: 220px;
   color: rgb(75, 75, 75);
   font-size: 13px;
@@ -434,7 +498,7 @@ td {
 /* lesson4 dot */
 .lesson4_dot {
   position: absolute;
-  top: 100%;
+  top: 105.5%;
   left: 88%;
   height: 25px;
   width: 25px;
@@ -444,14 +508,14 @@ td {
 /*lesson4 texts */
 .lesson4_text {
   position: absolute;
-  top: 98.8%;
+  top: 104%;
   left: 220px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
 }
 .lesson4_text2 {
   position: absolute;
-  top: 102.5%;
+  top: 108%;
   left: 220px;
   color: rgb(75, 75, 75);
   font-size: 13px;
@@ -471,7 +535,7 @@ td {
 /* lesson5 dot */
 .lesson5_dot {
   position: absolute;
-  top: 111%;
+  top: 116.5%;
   left: 88%;
   height: 25px;
   width: 25px;
@@ -481,14 +545,14 @@ td {
 /*lesson5 texts */
 .lesson5_text {
   position: absolute;
-  top: 110%;
+  top: 115%;
   left: 220px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
 }
 .lesson5_text2 {
   position: absolute;
-  top: 113.5%;
+  top: 119%;
   left: 220px;
   font-size: 13px;
   color: rgb(75, 75, 75);

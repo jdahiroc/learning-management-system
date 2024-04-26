@@ -10,15 +10,13 @@ import profileIcon from "../assets/profileIcon.png";
 // CSS
 import "../styles/coursesection.css";
 
-// firebase
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const CourseSection = () => {
   const [modal, setModal] = useState(false);
+  const [profileModal, setProfileModal] = useState(false);
 
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
@@ -26,6 +24,11 @@ const CourseSection = () => {
   // Modal Function
   const toggleModal = () => {
     setModal(!modal);
+  };
+
+  //Profile Modal Function
+  const toggleProfileModal = () => {
+    setProfileModal(!profileModal);
   };
 
   //logout function
@@ -38,6 +41,7 @@ const CourseSection = () => {
       console.log(e.message);
     }
   };
+
   return (
     <>
       {/* NAVIGATIONS */}
@@ -53,7 +57,8 @@ const CourseSection = () => {
             <li>CONTACT US</li>
           </ul>
         </div>
-        <div className="profile-container" onClick={toggleModal}>
+        {/* Navigation Profile */}
+        <div onClick={toggleProfileModal} className="profile-container">
           <div className="profile-icon-container">
             <img src={userIcon} alt="profile-icon" />
           </div>
@@ -64,9 +69,9 @@ const CourseSection = () => {
       </div>
 
       {/* Profile Modal */}
-      <div className={`overlay-profileIcon  ${modal ? "show" : ""}`}>
+      <div className={`overlay-profileIcon  ${profileModal ? "show" : ""}`}>
         <div className="close-btn-container">
-          <button className="profile-closebtn" onClick={toggleModal}>
+          <button className="profile-closebtn" onClick={toggleProfileModal}>
             &times;
           </button>
         </div>
@@ -101,10 +106,16 @@ const CourseSection = () => {
       <div className="course-header">
         <h3>Course Stream</h3>
         <div className="course_underline"></div>
-        {/* add course button */}
-        <div className="addbutt_container">
-          <img src={addbutton} alt="addbutton" />
-        </div>
+      </div>
+
+      {/* Modal Button */}
+      <div className="addbutt_container" onClick={toggleModal}>
+        <img src={addbutton} alt="addbutton" />
+      </div>
+
+      <div className={`overlay-course  ${modal ? "show" : ""}`}>
+        <button className="upload_lesson">Upload Lesson</button>
+        <button className="upload_assessment">Upload Assessment</button>
       </div>
 
       {/*Course Materials*/}
@@ -113,7 +124,7 @@ const CourseSection = () => {
           <table className="course_materials">
             <tr>
               <td>
-                <button>
+                <button className="button_course">
                   <img
                     className="lesson_image"
                     src={lessons}
@@ -125,10 +136,9 @@ const CourseSection = () => {
                 </button>
               </td>
             </tr>
-
             <tr>
               <td>
-                <button>
+                <button className="button_course">
                   <img
                     className="lesson_image2"
                     src={lessons}
@@ -140,10 +150,9 @@ const CourseSection = () => {
                 </button>
               </td>
             </tr>
-
             <tr>
               <td>
-                <button>
+                <button className="button_course">
                   <img
                     className="lesson_image3"
                     src={lessons}
@@ -155,10 +164,9 @@ const CourseSection = () => {
                 </button>
               </td>
             </tr>
-
             <tr>
               <td>
-                <button>
+                <button className="button_course">
                   <img
                     className="lesson_image4"
                     src={lessons}
@@ -170,10 +178,9 @@ const CourseSection = () => {
                 </button>
               </td>
             </tr>
-
-            <tr className="course_lesson5">
+            <tr>
               <td>
-                <button>
+                <button className="button_course">
                   <img
                     className="lesson_image5"
                     src={lessons}
@@ -191,5 +198,4 @@ const CourseSection = () => {
     </>
   );
 };
-
 export default CourseSection;
