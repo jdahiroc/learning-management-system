@@ -45,7 +45,7 @@ const Homepage = () => {
         </div>
         <div className="navigation-controls">
           <ul>
-            <li>ALL COURSES</li>
+            <li>COURSES</li>
             <li>ABOUT US</li>
             <li>CONTACT US</li>
           </ul>
