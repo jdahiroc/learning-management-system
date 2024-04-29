@@ -6,6 +6,7 @@ import addbutton from "../assets/AddButton.png";
 import lessons from "../assets/Lessons.png";
 import dots from "../assets/dots.png";
 import profileIcon from "../assets/profileIcon.png";
+import closebtt from "../assets/Close.png";
 
 // CSS
 import "../styles/coursesection.css";
@@ -17,6 +18,7 @@ import { UserAuth } from "../context/AuthContext";
 const CourseSection = () => {
   const [modal, setModal] = useState(false);
   const [profileModal, setProfileModal] = useState(false);
+  const [lessonModal, setLessonModal] = useState(false);
 
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
@@ -29,6 +31,11 @@ const CourseSection = () => {
   //Profile Modal Function
   const toggleProfileModal = () => {
     setProfileModal(!profileModal);
+  };
+
+  //Lesson Modal Function
+  const toggleLessonModal = () => {
+    setLessonModal(!lessonModal);
   };
 
   //logout function
@@ -114,8 +121,41 @@ const CourseSection = () => {
       </div>
 
       <div className={`overlay-course  ${modal ? "show" : ""}`}>
-        <button className="upload_lesson">Upload Lesson</button>
+        <button className="upload_lesson" onClick={toggleLessonModal}>
+          Upload Lesson
+        </button>
         <button className="upload_assessment">Upload Assessment</button>
+      </div>
+
+      {/* Lesson Modal */}
+      <div className={`overlay-lesson  ${lessonModal ? "show" : ""}`}>
+        <div className="container_button">
+          <img
+            className="closebutton_lesson"
+            src={closebtt}
+            alt="Close Button"
+            onClick={toggleLessonModal}
+          ></img>
+        </div>
+
+        <form>
+          <div className="content-uploadlesson">
+            <div className="header-lesson">
+              <h3 className="lesson-title">Upload Materials</h3>
+              <button className="add-lesson">Post</button>
+            </div>
+            <div className="lesson_underline"></div>
+
+            <input type="text" className="lesson-input" placeholder="Title" />
+            <input
+              type="text"
+              className="lesson-desc"
+              placeholder="Description"
+            />
+            <h3 className="lesson-attach">Attach</h3>
+            <button className="upload-butt">Upload</button>
+          </div>
+        </form>
       </div>
 
       {/*Course Materials*/}
