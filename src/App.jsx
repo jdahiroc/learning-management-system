@@ -9,6 +9,7 @@ import ProtectedRoute from "../src/ProtectedRoutes/ProtectedRoute";
 
 // Admin components
 import CourseSection from "../src/pages/CourseSection";
+import AdminHomepage from "./pages/AdminHome";
 
 function App() {
   return (
@@ -31,11 +32,20 @@ function App() {
             />
 
             {/* Admin Routes */}
+            {/* Course Section */}
             <Route
-              path="/admin"
+              path="/admin/course"
               element={
                 <ProtectedRoute>
                   <CourseSection />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/home"
+              element={
+                <ProtectedRoute>
+                  <AdminHomepage />
                 </ProtectedRoute>
               }
             />
