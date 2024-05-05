@@ -63,12 +63,8 @@ const SignUp = () => {
       // Save the document with the Same UID
       await setDoc(doc(db, "users", user.uid), newUser);
 
-      // Redirect based on user type
-      if (userType === "Student") {
-        navigate("/home");
-      } else if (userType === "Teacher") {
-        navigate("/admin");
-      }
+      // Redirect back to sign in
+      navigate("/")
     } catch (error) {
       console.error("Firebase Authentication Error:", error.message);
       setErrMsg("Failed to sign up. Please try again.");
