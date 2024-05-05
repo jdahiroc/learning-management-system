@@ -4,7 +4,6 @@ import userIcon from "../assets/profileIcon.png";
 import bannerImg from "../assets/banner.png";
 import headerLine from "../assets/headerLine.png";
 import profileIcon from "../assets/profileIcon.png";
-import addCourseButton from "../assets/AddButton.png";
 import loginImg from "../assets/signinImage.png";
 
 // react hooks
@@ -47,7 +46,7 @@ const Homepage = () => {
   });
 
   const [modal, setModal] = useState(false);
-  const [addCourseIconModal, setAddCourseIconModal] = useState(false);
+  const [addCourseIconModal ] = useState(false);
 
   const [courseDatas, setCourseDatas] = useState("");
 
@@ -57,11 +56,6 @@ const Homepage = () => {
   // Modal Function
   const toggleModal = () => {
     setModal(!modal);
-  };
-
-  // Add Course Modal Function
-  const toggleAddCourseIconModal = () => {
-    setAddCourseIconModal(!addCourseIconModal);
   };
 
   //logout function
@@ -169,15 +163,8 @@ const Homepage = () => {
         {/* Header */}
         <div className="header-container">
           <h2>Courses</h2>
-          <div className="addcourse-container">
-            <img
-              onClick={toggleAddCourseIconModal}
-              src={addCourseButton}
-              alt="Add Button"
-            />
-          </div>
         </div>
-
+        {/* Header Line */}
         <div className="headerLine-container">
           <img src={headerLine} alt="headerLine" />
         </div>
