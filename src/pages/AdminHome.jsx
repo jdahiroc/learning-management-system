@@ -3,20 +3,54 @@ import logoBrand from "../assets/LOGOBRAND.png";
 import userIcon from "../assets/profileIcon.png";
 import bannerImg from "../assets/banner.png";
 import headerLine from "../assets/headerLine.png";
-import courseLogo from "../assets/CourseLogo.png";
 import profileIcon from "../assets/profileIcon.png";
 import addCourseButton from "../assets/AddButton.png";
+import loginImg from "../assets/signinImage.png";
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// react hooks
+import { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+
+// firebase
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+
+// material ui
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 //css
 import "../styles/adminHomepage.css";
 
 const Homepage = () => {
+
+  // colors for <Card></Card>
+  const theme = createTheme({
+    typography: {
+      fontFamily: ["Poppins", "sans-serif"].join(","),
+    },
+    palette: {
+      primary: {
+        light: "#FFFFFF", // card-title font color
+        dark: "#E9EEF6", // card-teacher, card-section font color
+        darker: "#53BDE5",
+        main: "#056488", // card bg color
+      },
+    },
+  });
+
   const [modal, setModal] = useState(false);
-  const [addCourseModal, setAddCourseModal] = useState(false);
+  const [addCourseIconModal, setAddCourseIconModal] = useState(false);
+
+  const [courseDatas, setCourseDatas] = useState("");
 
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
@@ -27,8 +61,8 @@ const Homepage = () => {
   };
 
   // Add Course Modal Function
-  const toggleAddCourseModal = () => {
-    setAddCourseModal(!addCourseModal);
+  const toggleAddCourseIconModal = () => {
+    setAddCourseIconModal(!addCourseIconModal);
   };
 
   //logout function
@@ -42,129 +76,188 @@ const Homepage = () => {
     }
   };
 
+  // Fetch the course data (READ Operation)
+  const getCourses = async () => {
+    try {
+      console.log("User UID:", user && user.uid);
+      if (user && user.uid) {
+        const userCoursesCollection = collection(
+          db,
+          `Courses/${user.uid}/UserCourses`
+        );
+
+        const querySnapshot = await getDocs(userCoursesCollection);
+        const courseData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCourseDatas(courseData);
+      }
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (user && user.uid) {
+      getCourses();
+    }
+  }, [user]);
+
   return (
     <>
-      {/* NAVIGATIONS */}
-      <div className="navigation-container">
-        {/* nav-logo */}
-        <div className="logo-container">
-          <img src={logoBrand} alt="logoBrand" />
-        </div>
-        <div className="navigation-controls">
-          <ul>
-            <li>COURSES</li>
-            <li>ABOUT US</li>
-            <li>CONTACT US</li>
-          </ul>
-        </div>
-        {/* Navigation Profile */}
-        <div onClick={toggleModal} className="profile-container">
-          <div className="profile-icon-container">
-            <img src={userIcon} alt="profile-icon" />
+      <ThemeProvider theme={theme}>
+        {/* NAVIGATIONS */}
+        <div className="navigation-container">
+          {/* nav-logo */}
+          <div className="logo-container">
+            <img src={logoBrand} alt="logoBrand" />
           </div>
-          <div className="profile-name-container">
-            <h4>{user && user.displayName}</h4>
+          <div className="navigation-controls">
+            <ul>
+              <li>COURSES</li>
+              <li>ABOUT US</li>
+              <li>CONTACT US</li>
+            </ul>
+          </div>
+          {/* Navigation Profile */}
+          <div onClick={toggleModal} className="profile-container">
+            <div className="profile-icon-container">
+              <img src={userIcon} alt="profile-icon" />
+            </div>
+            <div className="profile-name-container">
+              <h4>{user && user.displayName}</h4>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Profile Modal */}
-      <div className={`overlay-profileIcon  ${modal ? "show" : ""}`}>
-        <div className="close-btn-container">
-          <button className="profile-closebtn" onClick={toggleModal}>
-            &times;
-          </button>
-        </div>
-        <div className="profileIcon-modal-container">
-          <div className="profile-icon-container">
-            <img src={profileIcon} alt="profile-icon" />
-          </div>
-          <div className="userName-container">
-            <h2>{user && user.displayName}</h2>
-          </div>
-          <div className="email-container">
-            <p>{user && user.email}</p>
-          </div>
-          <div className="logout-container">
-            <button onClick={handleLogout} className="logout-btn">
-              LOGOUT
+        {/* Profile Modal */}
+        <div className={`overlay-profileIcon  ${modal ? "show" : ""}`}>
+          <div className="close-btn-container">
+            <button className="profile-closebtn" onClick={toggleModal}>
+              &times;
             </button>
           </div>
+          <div className="profileIcon-modal-container">
+            <div className="profile-icon-container">
+              <img src={profileIcon} alt="profile-icon" />
+            </div>
+            <div className="userName-container">
+              <h2>{user && user.displayName}</h2>
+            </div>
+            <div className="email-container">
+              <p>{user && user.email}</p>
+            </div>
+            <div className="logout-container">
+              <button onClick={handleLogout} className="logout-btn">
+                LOGOUT
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Banner */}
-      <div className="banner-container">
-        <div className="banner-img">
-          <img src={bannerImg} alt="LMS Banner" />
+        {/* Banner */}
+        <div className="banner-container">
+          <div className="banner-img">
+            <img src={bannerImg} alt="LMS Banner" />
+          </div>
         </div>
-      </div>
 
-      {/* Header */}
-      <div className="header-container">
-        <h2>Courses</h2>
-      </div>
-      <div className="addcourse-container">
-        <img
-          onClick={toggleAddCourseModal}
-          src={addCourseButton}
-          alt="Add Button"
-        />
-      </div>
-      <div className="headerLine-container">
-        <img src={headerLine} alt="headerLine" />
-      </div>
+        {/* Header */}
+        <div className="header-container">
+          <h2>Courses</h2>
+          <div className="addcourse-container">
+            <img
+              onClick={toggleAddCourseIconModal}
+              src={addCourseButton}
+              alt="Add Button"
+            />
+          </div>
+        </div>
 
-      {/* Add Button Modal */}
-      <div className={`overlay-addCourseIcon ${addCourseModal ? "show" : ""}`}>
-        <div className="addCourse-container">
-          <p>Add Course</p>
+        <div className="headerLine-container">
+          <img src={headerLine} alt="headerLine" />
         </div>
-      </div>
 
-      {/* Add Course Modal  */}
-      
+        {courseDatas ? (
+          courseDatas.map((course) => (
+            <div className="card-container" key={course.id}>
+              <Card
+                sx={{
+                  width: 300,
+                  backgroundColor: `primary.main`,
+                  "&:hover": { backgroundColor: `primary.main` },
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="140"
+                  image={loginImg}
+                />
+                <CardContent>
+                  <Typography
+                    sx={{
+                      color: `primary.light`,
+                      fontFamily: "Poppins, sans-serif",
+                    }}
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                  >
+                    {course.courseName}
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h7"
+                    component="div"
+                    sx={{ color: `primary.dark` }}
+                  >
+                    {course.assignedTeacher}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: `primary.dark`,
+                      fontFamily: "Poppins, sans-serif",
+                    }}
+                  >
+                    {course.description}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Grid
+                    item
+                    container
+                    xs={12}
+                    alignItems="flex-end"
+                    direction="column"
+                  ></Grid>
+                </CardActions>
+              </Card>
+            </div>
+          ))
+        ) : (
+          <div className="loading-container">
+            <Box sx={{ display: "flex" }}>
+              <CircularProgress />
+            </Box>
+          </div>
+        )}
 
-      {/* Course Tiles */}
-      <div className="box">
-        <div className="img-course-container">
-          <img src={courseLogo} alt="Course Logo" />
+        {/* Add Button Modal */}
+        <div
+          className={`overlay-addCourseIcon ${
+            addCourseIconModal ? "show" : ""
+          }`}
+        >
+          <div className="addCourse-container">
+            <Link to={"/admin/add/course"}>
+              <p>Add Course</p>
+            </Link>
+          </div>
         </div>
-        <div className="course-user-container">
-          <span>John Mike S. Wayne</span>
-        </div>
-        <div className="course-title-container">
-          <span>Health Course 1</span>
-        </div>
-        <div className="course-description-container">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus animi natus maiores obcaecati incidunt dolore
-            dignissimos mollitia adipisci amet optio. Voluptas, deleniti!
-            Voluptatum repellat maiores temporibus, earum nihil non eos.
-          </p>
-        </div>
-      </div>
-
-      <div className="box3">
-        <div className="img-course-container">
-          <img src={courseLogo} alt="Course Logo" />
-        </div>
-        <div className="course-user-container">
-          <span>John Mike S. Wayne</span>
-        </div>
-        <div className="course-title-container">
-          <span>Health Course 1</span>
-        </div>
-        <div className="course-description-container">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus animi natus maiores obcaecati incidunt dolore
-            dignissimos mollitia adipisci amet optio. Voluptas, deleniti!
-            Voluptatum repellat maiores temporibus, earum nihil non eos.
-          </p>
-        </div>
-      </div>
+      </ThemeProvider>
     </>
   );
 };
