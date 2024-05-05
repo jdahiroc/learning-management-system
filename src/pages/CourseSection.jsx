@@ -12,7 +12,7 @@ import closebtt from "../assets/Close.png";
 import "../styles/coursesection.css";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const CourseSection = () => {
@@ -55,11 +55,15 @@ const CourseSection = () => {
       <div className="navigation-container">
         {/* nav-logo */}
         <div className="logo-container">
-          <img src={logoBrand} alt="logoBrand" />
+          <Link to="/admin/home">
+            <img src={logoBrand} alt="logoBrand" loading="lazy" />
+          </Link>
         </div>
         <div className="navigation-controls">
           <ul>
-            <li>ALL COURSES</li>
+            <Link to="/admin/page/course">
+              <li>COURSES</li>
+            </Link>
             <li>ABOUT US</li>
             <li>CONTACT US</li>
           </ul>
@@ -89,8 +93,8 @@ const CourseSection = () => {
           <div className="userName-container">
             <h2>{user && user.displayName}</h2>
           </div>
-          <div className="email-container">
-            <p>{user && user.email}</p>
+          <div className="userName-container">
+            <h2>Hi, {user && user.displayName}!</h2>
           </div>
           <div className="logout-container">
             <button onClick={handleLogout} className="logout-btn">

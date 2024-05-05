@@ -13,7 +13,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 // firebase
-import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 const AddCourse = () => {
@@ -87,7 +87,9 @@ const AddCourse = () => {
         </div>
         <div className="navigation-controls">
           <ul>
-            <li>COURSES</li>
+            <Link to="/admin/page/course">
+              <li>COURSES</li>
+            </Link>
             <li>ABOUT US</li>
             <li>CONTACT US</li>
           </ul>
@@ -116,8 +118,8 @@ const AddCourse = () => {
           <div className="userName-container">
             <h2>{user && user.displayName}</h2>
           </div>
-          <div className="email-container">
-            <p>{user && user.email}</p>
+          <div className="userName-container">
+            <h2>Hi, {user && user.displayName}!</h2>
           </div>
           <div className="logout-container">
             <button onClick={handleLogout} className="logout-btn">
