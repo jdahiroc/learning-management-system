@@ -10,6 +10,8 @@ import ProtectedRoute from "../src/ProtectedRoutes/ProtectedRoute";
 // Admin components
 import CourseSection from "../src/pages/CourseSection";
 import AdminHomepage from "./pages/AdminHome";
+import AddCourse from "./pages/AddCourse";
+import AdminCoursePage from "./pages/AdminCoursePage";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
                   <Homepage />
                 </ProtectedRoute>
               }
+              userType="Student"
             />
 
             {/* Admin Routes */}
@@ -40,12 +43,31 @@ function App() {
                   <CourseSection />
                 </ProtectedRoute>
               }
+              userType="Teacher"
             />
             <Route
               path="/admin/home"
               element={
                 <ProtectedRoute>
                   <AdminHomepage />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/admin/page/course"
+              element={
+                <ProtectedRoute>
+                  <AdminCoursePage />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/admin/add/course"
+              element={
+                <ProtectedRoute>
+                  <AddCourse />
                 </ProtectedRoute>
               }
             />
