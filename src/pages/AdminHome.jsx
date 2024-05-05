@@ -31,7 +31,6 @@ import Box from "@mui/material/Box";
 import "../styles/adminHomepage.css";
 
 const Homepage = () => {
-
   // colors for <Card></Card>
   const theme = createTheme({
     typography: {
@@ -111,11 +110,15 @@ const Homepage = () => {
         <div className="navigation-container">
           {/* nav-logo */}
           <div className="logo-container">
-            <img src={logoBrand} alt="logoBrand" />
+            <Link to="/admin/home">
+              <img src={logoBrand} alt="logoBrand" loading="lazy" />
+            </Link>
           </div>
           <div className="navigation-controls">
             <ul>
-              <li>COURSES</li>
+              <Link to="/admin/page/course">
+                <li>COURSES</li>
+              </Link>
               <li>ABOUT US</li>
               <li>CONTACT US</li>
             </ul>
@@ -143,7 +146,7 @@ const Homepage = () => {
               <img src={profileIcon} alt="profile-icon" />
             </div>
             <div className="userName-container">
-              <h2>{user && user.displayName}</h2>
+              <h2>Hi, {user && user.displayName}!</h2>
             </div>
             <div className="email-container">
               <p>{user && user.email}</p>
