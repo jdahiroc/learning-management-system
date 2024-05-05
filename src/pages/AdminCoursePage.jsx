@@ -145,10 +145,10 @@ const AdminCoursePage = () => {
               <img src={profileIcon} alt="profile-icon" />
             </div>
             <div className="userName-container">
-              <h2>{user && user.displayName}</h2>
-            </div>
-            <div className="userName-container">
               <h2>Hi, {user && user.displayName}!</h2>
+            </div>
+            <div className="email-container">
+              <p>{user && user.email}</p>
             </div>
             <div className="logout-container">
               <button onClick={handleLogout} className="logout-btn">
