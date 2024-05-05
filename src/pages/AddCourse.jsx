@@ -66,7 +66,7 @@ const AddCourse = () => {
         // Add a new document to the subcollection
         await addDoc(userCoursesCollection, newCourse);
         alert("Added Course Successfully!");
-        navigate("/admin/add-course");
+        navigate("/admin/page/course");
       } else {
         console.log("User is not authenticated or UID is not available.");
       }
