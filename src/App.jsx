@@ -37,6 +37,15 @@ function App() {
             {/* Admin Routes */}
             {/* Course Section */}
             <Route
+              path="/admin/home"
+              element={
+                <ProtectedRoute>
+                  <AdminHomepage />
+                </ProtectedRoute>
+              }
+              userType="Teacher"
+            />
+            <Route
               path="/admin/course"
               element={
                 <ProtectedRoute>
@@ -46,23 +55,14 @@ function App() {
               userType="Teacher"
             />
             <Route
-              path="/admin/home"
-              element={
-                <ProtectedRoute>
-                  <AdminHomepage />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
               path="/admin/page/course"
               element={
                 <ProtectedRoute>
                   <AdminCoursePage />
                 </ProtectedRoute>
               }
+              userType="Teacher"
             />
-
             <Route
               path="/admin/add/course"
               element={
@@ -70,6 +70,7 @@ function App() {
                   <AddCourse />
                 </ProtectedRoute>
               }
+              userType="Teacher"
             />
           </Routes>
         </AuthContextProvider>
