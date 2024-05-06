@@ -111,10 +111,9 @@
 
 .overlay-addCourseIcon {
   display: none;
-  z-index: 1000;
   position: absolute;
   left: 80%;
-  top: 25%;
+  top: 21%;
   background-color: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
