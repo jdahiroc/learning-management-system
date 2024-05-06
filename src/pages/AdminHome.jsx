@@ -72,18 +72,22 @@ const Homepage = () => {
   // Fetch the course data (READ Operation)
   const getCourses = async () => {
     try {
-      console.log("User UID:", user && user.uid);
+      // console.log("User UID:", user && user.uid);
+
       if (user && user.uid) {
         const userCoursesCollection = collection(
           db,
           `Courses/${user.uid}/UserCourses`
         );
 
+        // access the folders to start scanning all document data
         const querySnapshot = await getDocs(userCoursesCollection);
+        // scan all documents data
         const courseData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
+        
         setCourseDatas(courseData);
       }
     } catch (error) {
@@ -169,6 +173,7 @@ const Homepage = () => {
           <img src={headerLine} alt="headerLine" />
         </div>
 
+        {/* Renders data after scanning all documents data */}
         {courseDatas ? (
           courseDatas.map((course) => (
             <div className="card-container" key={course.id}>
