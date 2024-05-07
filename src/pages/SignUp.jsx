@@ -11,6 +11,17 @@ import registerImg from "../assets/signupImage.png";
 //css link
 import "../styles/signup.css";
 
+// Popup Component
+// eslint-disable-next-line react/prop-types
+const Popup = ({ message, onClose }) => (
+  <div className="popup">
+    <p className="popup-text">{message}</p>
+    <button className="close-btn" onClick={onClose}>
+      Close
+    </button>
+  </div>
+);
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +32,7 @@ const SignUp = () => {
   const [gender, setGender] = useState(false);
   const [userType, setUserType] = useState("Student");
   const [errMsg, setErrMsg] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const { createUser } = UserAuth();
   const navigate = useNavigate();
@@ -39,6 +51,33 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrMsg("");
+
+    //new error handling
+    if (!fName || !lName || !email || !password || !confirmPassword) {
+      setErrMsg("Please fill in all fields.");
+      setShowPopup(true);
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrMsg("Password must be at least 6 characters long.");
+      setShowPopup(true);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setErrMsg("Passwords do not match.");
+      setShowPopup(true);
+      return;
+    }
+
+    // // Check if email already exists
+    // const existingUser = await getqUserByEmail(auth, email);
+    // if (existingUser) {
+    //   setErrMsg("An account with this email already exists.");
+    //   setShowPopup(true);
+    //   return;
+    // }
 
     const newUser = {
       fName,
@@ -64,7 +103,7 @@ const SignUp = () => {
       await setDoc(doc(db, "users", user.uid), newUser);
 
       // Redirect back to sign in
-      navigate("/")
+      navigate("/");
     } catch (error) {
       console.error("Firebase Authentication Error:", error.message);
       setErrMsg("Failed to sign up. Please try again.");
@@ -73,6 +112,9 @@ const SignUp = () => {
 
   return (
     <>
+      {showPopup && (
+        <Popup message={errMsg} onClose={() => setShowPopup(false)} />
+      )}
       <div className="error-container-login">
         {/* error message */}
         <p className={errMsg ? "errmsg" : ""} aria-live="assertive">

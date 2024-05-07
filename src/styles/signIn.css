@@ -14,6 +14,40 @@
   width: 67%;
 }
 
+.popup {
+  background-color: #056488;
+  height: auto;
+  width: 250px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup-text {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.close-btn {
+  background-color: #ffffff;
+  color: #056488;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.close-btn:hover {
+  background-color: #f2f2f2;
+}
+
 body {
   background-color: #e9eef6;
   padding-bottom: 50px;
