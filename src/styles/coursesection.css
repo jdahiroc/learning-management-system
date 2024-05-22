@@ -186,18 +186,11 @@
   top: 25%;
   left: 20%;
   font-size: 30px;
+  font-family: "Inter", sans-serif;
 }
 
 /* upload buttons */
 .upload_lesson {
-  background-color: #f3f7ff;
-  border: none;
-  width: 100%;
-  height: 50%;
-  border-radius: 10px;
-}
-
-.upload_assessment {
   background-color: #f3f7ff;
   border: none;
   width: 100%;
@@ -259,6 +252,126 @@
   width: 150px;
   height: 40px;
   color: #868686;
+}
+/* close img icon for asessment modal */
+.closebutton_assessment {
+  position: absolute;
+  height: 48px;
+  width: 48px;
+  left: 95%;
+  top: 3%;
+}
+/*Upload assessment Contents*/
+.container_button2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 75px;
+  background-color: #53bde5;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+}
+.overlay-assessment {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Inter", sans-serif;
+  background-color: #e9eef6;
+}
+.add-assessment {
+  position: absolute;
+  top: 25%;
+  left: 73%;
+  background-color: #056488;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  width: 100px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.add-assessment:hover {
+  cursor: pointer;
+}
+
+.assessment-title {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  font-size: 30px;
+  font-family: "Inter", sans-serif;
+}
+
+/* upload buttons */
+
+.assessment_underline {
+  width: 100%;
+  max-width: 900px;
+  height: 2px;
+  background-color: #000000;
+  position: absolute;
+  top: 34%;
+  left: 20%;
+}
+
+.assessment-input {
+  border: none;
+  border-radius: 10px;
+  width: 500px;
+  height: 50px;
+  position: absolute;
+  top: 38%;
+  left: 20%;
+  padding-left: 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.assessment-desc {
+  border: none;
+  border-radius: 10px;
+  width: 900px;
+  height: 120px;
+  position: absolute;
+  top: 47%;
+  left: 20%;
+  padding-left: 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.assessment-attach {
+  position: absolute;
+  left: 20%;
+  top: 68%;
+  font-family: "Inter", sans-serif;
+  color: #303030;
+  font-weight: 500;
+}
+
+.upload-butt2 {
+  position: absolute;
+  left: 20%;
+  top: 72%;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+  width: 150px;
+  height: 40px;
+  color: #868686;
+}
+
+.upload_assessment {
+  background-color: #f3f7ff;
+  border: none;
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
 }
 
 :hover.upload_assessment {
