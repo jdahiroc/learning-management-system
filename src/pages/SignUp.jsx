@@ -6,10 +6,10 @@ import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 //image link
-import registerImg from "../assets/signupImage.png";
+import registerImg from "../assets/signUpImage.png";
 
 //css link
-import "../styles/signup.css";
+import "../styles/signUp.css";
 
 // Popup Component
 // eslint-disable-next-line react/prop-types
