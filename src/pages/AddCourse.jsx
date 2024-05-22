@@ -67,6 +67,7 @@ const AddCourse = () => {
         await addDoc(userCoursesCollection, newCourse);
         alert("Added Course Successfully!");
         navigate("/admin/page/course");
+        
       } else {
         console.log("User is not authenticated or UID is not available.");
       }
