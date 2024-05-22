@@ -46,7 +46,7 @@ function App() {
               userType="Teacher"
             />
             <Route
-              path="/admin/course"
+              path="/admin/course/:courseId"
               element={
                 <ProtectedRoute>
                   <CourseSection />
