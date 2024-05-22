@@ -58,6 +58,7 @@ body {
   background: #ffffff;
   height: 660px;
   border-radius: 20px;
+  box-shadow: 0 0 10px 1px #d1d1d1;
 }
 
 .signUp-container .signUp-side-img-container img {
@@ -68,7 +69,7 @@ body {
 .signUp-container .headerText-container {
   display: flex;
   flex-direction: row;
-  margin-left: 270px;
+  margin-left: 318px;
   gap: 25px;
 }
 

@@ -44,9 +44,6 @@
   cursor: pointer;
   margin-top: 10px;
 }
-.close-btn:hover {
-  background-color: #f2f2f2;
-}
 
 body {
   background-color: #e9eef6;
@@ -62,6 +59,7 @@ body {
   background: #ffffff;
   height: 463px;
   border-radius: 20px;
+  box-shadow: 0 0 10px 1px #d1d1d1;
 }
 
 /* image */
@@ -74,7 +72,7 @@ body {
 .signIn-container .header-text-container {
   display: flex;
   flex-direction: row;
-  margin-left: 270px;
+  margin-left: 315px;
   gap: 25px;
 }
 
