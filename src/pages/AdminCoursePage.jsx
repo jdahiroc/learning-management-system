@@ -75,6 +75,7 @@ const AdminCoursePage = () => {
   };
 
   // Fetch the course data (READ Operation)
+  // Display the courses after created
   const getCourses = async () => {
     try {
       console.log("User UID:", user && user.uid);
@@ -94,6 +95,13 @@ const AdminCoursePage = () => {
     } catch (error) {
       console.error("Error fetching courses:", error);
     }
+  };
+
+  // This is a function...
+  // where user click the course it will redirect to Course Section
+  // that has task, announcements, assessments etc.
+  const handleCourseClick = (courseId) => {
+    navigate(`/course/${courseId}`);
   };
 
   useEffect(() => {
@@ -174,9 +182,14 @@ const AdminCoursePage = () => {
           <img src={headerLine} alt="headerLine" />
         </div>
 
+        {/* This the course Box or List of courses displayed */}
         {courseDatas ? (
           courseDatas.map((course) => (
-            <div className="card-container" key={course.id}>
+            <div
+              className="card-container"
+              key={course.id}
+              onClick={() => handleCourseClick(course.id)}
+            >
               <Card
                 sx={{
                   width: 300,

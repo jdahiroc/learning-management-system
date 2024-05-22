@@ -46,7 +46,7 @@ const Homepage = () => {
   });
 
   const [modal, setModal] = useState(false);
-  const [addCourseIconModal ] = useState(false);
+  const [addCourseIconModal] = useState(false);
 
   const [courseDatas, setCourseDatas] = useState("");
 
@@ -87,12 +87,19 @@ const Homepage = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        
+
         setCourseDatas(courseData);
       }
     } catch (error) {
       console.error("Error fetching courses:", error);
     }
+  };
+
+  // This is a function...
+  // where user click the course it will redirect to Course Section
+  // that has task, announcements, assessments etc.
+  const handleCourseClick = (courseId) => {
+    navigate(`/course/${courseId}`);
   };
 
   useEffect(() => {
@@ -176,7 +183,11 @@ const Homepage = () => {
         {/* Renders data after scanning all documents data */}
         {courseDatas ? (
           courseDatas.map((course) => (
-            <div className="card-container" key={course.id}>
+            <div
+              className="card-container"
+              key={course.id}
+              onClick={() => handleCourseClick(course.id)}
+            >
               <Card
                 sx={{
                   width: 300,
