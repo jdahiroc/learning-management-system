@@ -101,7 +101,7 @@ const AdminCoursePage = () => {
   // where user click the course it will redirect to Course Section
   // that has task, announcements, assessments etc.
   const handleCourseClick = (courseId) => {
-    navigate(`/course/${courseId}`);
+    navigate(`/admin/course/${courseId}`);
   };
 
   useEffect(() => {
