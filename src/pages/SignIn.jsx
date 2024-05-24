@@ -9,6 +9,10 @@ import "../styles/signIn.css";
 
 // img
 import loginImg from "../assets/signinImage.png";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 
 // Popup Component
 // eslint-disable-next-line react/prop-types
@@ -21,14 +25,32 @@ const Popup = ({ message, onClose }) => (
   </div>
 );
 
+const loadingModal = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "#ffffff",
+  boxShadow: 24,
+  p: 4,
+};
+
 const SignIn = () => {
   const navigate = useNavigate();
   const { signIn, updateProfile } = UserAuth();
 
+  // React States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
+  const [loading, setLoading] = useState(false);
+
+  // Loading Modal States
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   // Function to fetch user data from Firestore based on email
   const fetchUserDataByEmail = async (email) => {
@@ -51,6 +73,7 @@ const SignIn = () => {
   };
 
   const handleSignIn = async (email, password) => {
+    setLoading(true);
     try {
       // Reference for email/password to authenticate user account
       await signIn(email, password);
@@ -91,6 +114,21 @@ const SignIn = () => {
 
   return (
     <>
+      {loading && (
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={loadingModal}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Please wait...
+            </Typography>
+            <CircularProgress />
+          </Box>
+        </Modal>
+      )}
       {showPopup && (
         <Popup message={errMsg} onClose={() => setShowPopup(false)} />
       )}
@@ -144,7 +182,9 @@ const SignIn = () => {
               </p>
             </div>
             <div className="submit-container">
-              <button className="submit">Login</button>
+              <button className="submit" onClick={handleOpen}>
+                Login
+              </button>
             </div>
           </form>
         </div>
