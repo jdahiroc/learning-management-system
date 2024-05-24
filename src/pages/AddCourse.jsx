@@ -65,7 +65,7 @@ const AddCourse = () => {
 
         // Add a new document to the subcollection
         await addDoc(userCoursesCollection, newCourse);
-        alert("Added Course Successfully!");
+        alert("Successfully Added Course!");
         navigate("/admin/page/course");
         
       } else {
