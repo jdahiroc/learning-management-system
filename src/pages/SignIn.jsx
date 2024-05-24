@@ -10,7 +10,6 @@ import "../styles/signIn.css";
 // img
 import loginImg from "../assets/signinImage.png";
 
-
 // Popup Component
 // eslint-disable-next-line react/prop-types
 const Popup = ({ message, onClose }) => (
@@ -31,8 +30,8 @@ const SignIn = () => {
   const [errMsg, setErrMsg] = useState("");
   const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
 
-  // Function to fetch full name from Firestore based on email
-  const fetchFullNameByEmail = async (email) => {
+  // Function to fetch user data from Firestore based on email
+  const fetchUserDataByEmail = async (email) => {
     try {
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("email", "==", email));
@@ -44,7 +43,7 @@ const SignIn = () => {
 
       // Assuming there's only one user with the given email
       const userData = querySnapshot.docs[0].data();
-      return userData.fName;
+      return userData;
     } catch (error) {
       console.error("Error fetching user data:", error);
       throw error;
@@ -56,15 +55,22 @@ const SignIn = () => {
       // Reference for email/password to authenticate user account
       await signIn(email, password);
 
-      // Fetch full name from Firestore based on email
-      const fName = await fetchFullNameByEmail(email);
+      // Fetch user data from Firestore based on email
+      const userData = await fetchUserDataByEmail(email);
+      const fName = userData.fName;
+      const userType = userData.userType;
 
       // Update user profile with full name
       await updateProfile(fName);
 
-      // if authentication is successful navigate user to homepage
-      // but based on user role
-      navigate("/home");
+      // Navigate based on user type
+      if (userType === "Teacher") {
+        navigate("/admin/home");
+      } else if (userType === "Student") {
+        navigate("/home");
+      } else {
+        throw new Error("Unknown User");
+      }
     } catch (error) {
       console.error("Error signing in:", error);
       setErrMsg("Invalid email or password");
@@ -82,8 +88,6 @@ const SignIn = () => {
       setErrMsg(error.message);
     }
   };
-
-  
 
   return (
     <>
