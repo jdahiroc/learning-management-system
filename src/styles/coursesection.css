@@ -90,8 +90,8 @@
 .overlay-course {
   display: none;
   position: absolute;
-  left: 71%;
-  top: 61%;
+  left: 72%;
+  top: 56.5%;
   background-color: #f3f7ff;
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.147);
   border-radius: 10px;
@@ -102,6 +102,7 @@
   z-index: 1000;
   overflow: none;
   font-family: "Inter", sans-serif;
+  font-weight: 500;
 }
 
 .show {
@@ -161,7 +162,7 @@
   top: 3%;
 }
 
-/*Upload lesson Contents*/
+/*Upload Materials Contents*/
 .add-lesson {
   position: absolute;
   top: 25%;
@@ -196,6 +197,26 @@
   width: 100%;
   height: 50%;
   border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.upload_assessment {
+  background-color: #f3f7ff;
+  border: none;
+  width: 100%;
+  height: 50%;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+/* when hover the modal options */
+.upload_assessment:hover,
+.upload_lesson:hover {
+  background-color: #056488;
+  color: #f3f7ff;
+  cursor: pointer;
 }
 
 .lesson_underline {
@@ -216,51 +237,92 @@
   position: absolute;
   top: 38%;
   left: 20%;
-  padding-left: 10px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  box-shadow: 0px 1.5px 1px rgba(0, 0, 0, 0.2);
+  font-family: "Inter", sans-serif;
 }
 
 .lesson-desc {
   border: none;
   border-radius: 10px;
   width: 900px;
-  height: 120px;
+  min-width: 900px;
+  max-width: 900px;
+  height: 180px;
+  max-height: 180px;
+  min-height: 140px;
   position: absolute;
   top: 47%;
   left: 20%;
-  padding-left: 10px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  box-shadow: 0px 1.5px 1px rgba(0, 0, 0, 0.2);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
 }
 
 .lesson-attach {
   position: absolute;
   left: 20%;
-  top: 68%;
+  top: 73%;
   font-family: "Inter", sans-serif;
   color: #303030;
   font-weight: 500;
 }
 
-.upload-butt {
+.uploadLabel-container {
   position: absolute;
   left: 20%;
-  top: 72%;
+  top: 77%;
   border: none;
   border-radius: 5px;
   background-color: white;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
   width: 150px;
   height: 40px;
   color: #868686;
+  font-family: "Inter", sans-serif;
 }
+
+.uploadLabel {
+  display: flex;
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  color: #868686;
+  align-items: center;
+  padding: 10px 5px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 1px #0000001e;
+}
+
+.uploadLabel:hover {
+  background-color: #868686;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.attachmentFileName {
+  font-size: 10px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
 /* close img icon for asessment modal */
 .closebutton_assessment {
-  position: absolute;
-  height: 48px;
-  width: 48px;
-  left: 95%;
-  top: 3%;
+  height: 35px;
+  width: 35px;
+  margin-right: 1.5em;
 }
+
+.container_button2 .closebutton_assessment:hover {
+  background-color: #30303014;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 /*Upload assessment Contents*/
 .container_button2 {
   display: flex;
@@ -291,8 +353,6 @@
   height: 40px;
   width: 100px;
   color: white;
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
@@ -308,8 +368,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/* upload buttons */
-
 .assessment_underline {
   width: 100%;
   max-width: 900px;
@@ -320,6 +378,7 @@
   left: 20%;
 }
 
+/* upload buttons */
 .assessment-input {
   border: none;
   border-radius: 10px;
@@ -328,7 +387,7 @@
   position: absolute;
   top: 38%;
   left: 20%;
-  padding-left: 10px;
+  padding-left: 1em;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -336,59 +395,59 @@
   border: none;
   border-radius: 10px;
   width: 900px;
-  height: 120px;
+  min-width: 900px;
+  max-width: 900px;
+  height: 180px;
+  max-height: 180px;
+  min-height: 140px;
   position: absolute;
   top: 47%;
   left: 20%;
-  padding-left: 10px;
+  padding: 1em;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-.assessment-attach {
+.uploadLabel2-container {
   position: absolute;
   left: 20%;
-  top: 68%;
-  font-family: "Inter", sans-serif;
-  color: #303030;
-  font-weight: 500;
-}
-
-.upload-butt2 {
-  position: absolute;
-  left: 20%;
-  top: 72%;
+  top: 77%;
   border: none;
   border-radius: 5px;
   background-color: white;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
   width: 150px;
   height: 40px;
   color: #868686;
+  font-family: "Inter", sans-serif;
 }
 
-.upload_assessment {
-  background-color: #f3f7ff;
-  border: none;
-  width: 100%;
-  height: 50%;
-  border-radius: 10px;
+.uploadLabel2 {
+  display: flex;
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  color: #868686;
+  align-items: center;
+  padding: 10px 5px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 1px #0000001e;
 }
 
-:hover.upload_assessment {
-  background-color: #056488;
-  color: #f3f7ff;
-}
-:hover.upload_lesson {
-  background-color: #056488;
-  color: #f3f7ff;
+.uploadLabel2:hover {
+  background-color: #868686;
+  color: #ffffff;
+  cursor: pointer;
 }
 
-.course_materials {
-  margin-top: 0;
+.attachmentFileName2 {
+  font-size: 10px;
 }
 
-.course_materials table tr td {
-  padding: 10px;
+input[type="file"] {
+  display: none;
 }
 
 .picture {
@@ -484,16 +543,37 @@
   color: #ffffff;
 }
 
-/*---------- Contents ----------*/
+.upload-img-container {
+  display: flex;
+  align-content: center;
+}
+
+/*---------- Course Contents ----------*/
 .course_content-container {
   display: flex;
-  width: 100%;
-  max-width: 850px;
-  margin-top: 3.5em;
-  margin-left: 6em;
-  border-radius: 30px;
   justify-content: center;
-  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.course-assessments-h3,
+.course-materials-h3 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+}
+
+.button_course:hover {
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.course-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1050px;
 }
 
 .course-header {
@@ -506,7 +586,7 @@
 
 .course_underline {
   width: 100%;
-  max-width: 990px;
+  max-width: 1060px;
   height: 2px;
   background-color: #000000;
   margin-right: 140px;
@@ -521,35 +601,63 @@
   width: 25%;
 }
 
-.course_materials tr td button {
-  background-color: #74adc3;
+.button_course {
+  background-color: #7daac9;
   font-size: 20px;
   color: white;
-  border-style: none;
+  border: none;
   border-radius: 15px;
-  width: 1200px;
-  height: 62px;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  min-width: 300px;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
 }
 
-.course_materials {
-  margin-top: 0;
+.lesson_image {
+  background-color: #e4e4e4;
+  border-radius: 50%;
+  padding: 5px;
+  height: 35px;
+  width: 35px;
 }
 
-.course_materials table tr td {
-  padding: 10px;
+.lesson_dot {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
-.picture {
-  background-color: #056488;
-  width: 1350px;
-  height: 250px;
-  border-radius: 30px;
-  margin-top: 40px;
-  margin-left: 50px;
+.lesson_text span {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 600;
+  position: absolute;
+  top: 23px;
+  left: 11%;
+  flex: 1;
+}
+
+.lesson_text2 span {
+  position: absolute;
+  top: 49px;
+  left: 11%;
+  margin-right: 1.5rem;
+  font-size: 14px;
+  font-weight: 400;
+  color: #0f323f;
+  opacity: 0.6;
 }
 
 /*Banner*/
+
 .course_banner {
   display: flex;
   justify-content: center;
@@ -591,26 +699,9 @@
   font-size: 50px;
 }
 
-.course_text3 {
-  position: absolute;
-  top: 31%;
-  left: 320px;
-  transform: translateY(-50%);
-  color: white;
-  font-family: "Inter", sans-serif;
-  font-size: 30px;
-}
-
-/* table */
-td {
-  padding: 5px;
-}
-
-.course_materials {
-  margin-top: 10px;
-}
 
 /* add button */
+
 .addbutt_container {
   display: flex;
   justify-content: flex-end;
@@ -628,180 +719,4 @@ td {
   left: 20px;
   height: 56px;
   width: 56px;
-}
-
-/* lesson1 dot */
-.lesson1_dot {
-  position: absolute;
-  top: 73%;
-  left: 88%;
-  height: 25px;
-  width: 25px;
-  cursor: pointer;
-}
-
-/*lesson1 texts */
-.lesson1_text {
-  position: absolute;
-  top: 72%;
-  left: 220px;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-}
-.lesson1_text2 {
-  position: absolute;
-  top: 76%;
-  left: 220px;
-  color: rgb(75, 75, 75);
-  font-size: 13px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-}
-
-/* lesson2 image */
-.lesson_image2 {
-  position: relative;
-  display: flex;
-  left: 20px;
-  height: 56px;
-  width: 56px;
-}
-
-/* lesson2 dot */
-.lesson2_dot {
-  position: absolute;
-  top: 84%;
-  left: 88%;
-  height: 25px;
-  width: 25px;
-  cursor: pointer;
-}
-
-/*lesson2 texts */
-.lesson2_text {
-  position: absolute;
-  top: 82.5%;
-  left: 220px;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-}
-.lesson2_text2 {
-  position: absolute;
-  top: 86.5%;
-  left: 220px;
-  color: rgb(75, 75, 75);
-  font-size: 13px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-}
-
-/* lesson3 image */
-.lesson_image3 {
-  position: relative;
-  display: flex;
-  left: 20px;
-  height: 56px;
-  width: 56px;
-}
-
-/* lesson3 dot */
-.lesson3_dot {
-  position: absolute;
-  top: 95%;
-  left: 88%;
-  height: 25px;
-  width: 25px;
-  cursor: pointer;
-}
-
-/*lesson3 texts */
-.lesson3_text {
-  position: absolute;
-  top: 93%;
-  left: 220px;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-}
-.lesson3_text2 {
-  position: absolute;
-  top: 97%;
-  left: 220px;
-  color: rgb(75, 75, 75);
-  font-size: 13px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-}
-
-/* lesson4 image */
-.lesson_image4 {
-  position: relative;
-  display: flex;
-  left: 20px;
-  height: 56px;
-  width: 56px;
-}
-
-/* lesson4 dot */
-.lesson4_dot {
-  position: absolute;
-  top: 105.5%;
-  left: 88%;
-  height: 25px;
-  width: 25px;
-  cursor: pointer;
-}
-
-/*lesson4 texts */
-.lesson4_text {
-  position: absolute;
-  top: 104%;
-  left: 220px;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-}
-.lesson4_text2 {
-  position: absolute;
-  top: 108%;
-  left: 220px;
-  color: rgb(75, 75, 75);
-  font-size: 13px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-}
-
-/* lesson5 image */
-.lesson_image5 {
-  position: relative;
-  display: flex;
-  left: 20px;
-  height: 56px;
-  width: 56px;
-}
-
-/* lesson5 dot */
-.lesson5_dot {
-  position: absolute;
-  top: 116.5%;
-  left: 88%;
-  height: 25px;
-  width: 25px;
-  cursor: pointer;
-}
-
-/*lesson5 texts */
-.lesson5_text {
-  position: absolute;
-  top: 115%;
-  left: 220px;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-}
-.lesson5_text2 {
-  position: absolute;
-  top: 119%;
-  left: 220px;
-  font-size: 13px;
-  color: rgb(75, 75, 75);
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
 }
