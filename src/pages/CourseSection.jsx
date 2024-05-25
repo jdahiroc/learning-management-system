@@ -4,23 +4,69 @@ import userIcon from "../assets/MaleUser.png";
 import courseLogo from "../assets/CourseLogo.png";
 import addbutton from "../assets/AddButton.png";
 import lessons from "../assets/Lessons.png";
+import task from "../assets/Tasks.png";
 import dots from "../assets/dots.png";
 import profileIcon from "../assets/profileIcon.png";
 import closebtt from "../assets/Close.png";
 
+// Material UI
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import UploadIcon from "@mui/icons-material/Upload";
+
 // CSS
 import "../styles/coursesection.css";
 
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+// react hooks
+import { useState, useEffect } from "react";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+
+// firebase
+import {
+  getDoc,
+  getDocs,
+  doc,
+  addDoc,
+  collection,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db, storage } from "../firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const CourseSection = () => {
   const [modal, setModal] = useState(false);
   const [profileModal, setProfileModal] = useState(false);
   const [lessonModal, setLessonModal] = useState(false);
+  const [assessmentModal, setAssessmentModal] = useState(false);
 
+  // For Course Datas
+  const { courseId } = useParams(); // Get the course ID from the URL
+  const [courseData, setCourseData] = useState("");
+
+  // Lesson Upload States
+  const [lessonTitle, setLessonTitle] = useState();
+  const [lessonDescription, setLessonDescription] = useState();
+  const [lessonMaterials, setLessonMaterials] = useState([]);
+
+  // Assessments Upload States
+  const [assessmentTitle, setAssessmentTitle] = useState();
+  const [assessmentInstructions, setAssessmentInstructions] = useState();
+  const [assessments, setAssessments] = useState([]);
+
+  // Attachments Upload States
+  const [attachments, setAttachments] = useState("");
+  const [attachmentFileName, setAttachmentFileName] = useState([]);
+
+  // useEffect for uploading files to firebase storage
+  useEffect(() => {
+    const uploadFile = () => {};
+    attachments && uploadFile();
+  }, [attachments]);
+
+  // get the user authentication context
   const { user, logout } = UserAuth();
+  // navigation variable
   const navigate = useNavigate();
 
   // Modal Function
@@ -38,6 +84,11 @@ const CourseSection = () => {
     setLessonModal(!lessonModal);
   };
 
+  //Assessment Modal Function
+  const toggleAssessmentModal = () => {
+    setAssessmentModal(!assessmentModal);
+  };
+
   //logout function
   const handleLogout = async () => {
     try {
@@ -48,6 +99,209 @@ const CourseSection = () => {
       console.log(e.message);
     }
   };
+
+  // handle submit in uploading
+  const handleSubmitLessonMaterials = async (e) => {
+    e.preventDefault();
+
+    const storageRef = ref(storage, attachments.name);
+    const uploadTask = uploadBytesResumable(storageRef, attachments);
+
+    // starts to upload the file
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+            break;
+        }
+      },
+      (e) => {
+        console.log(e);
+      },
+      async () => {
+        // gets the downloadURL of your file
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+
+        const newLessonMaterials = {
+          lessonTitle: lessonTitle,
+          lessonDescription: lessonDescription,
+          lessonAttachments: downloadURL,
+          addedOn: serverTimestamp(),
+        };
+
+        try {
+          // Check user is available before accessing uid
+          if (user && user.uid) {
+            // Reference the 'Courses' collection, then the subcollection with the user's UID
+            const userCoursesCollection = collection(
+              db,
+              `Courses/${user.uid}/UserCourses/${courseId}/lessonMaterials`
+            );
+
+            // Add the new lesson material document
+            await addDoc(userCoursesCollection, newLessonMaterials);
+            alert("Successfully Added Lesson Materials!");
+            navigate(`/admin/course/${courseId}`);
+          } else {
+            console.log("User is not authenticated or UID is not available.");
+          }
+        } catch (e) {
+          // Log the error for better debugging
+          console.error("Error Occurred!", e);
+        }
+      }
+    );
+  };
+
+  // handle submit in uploading
+  const handleSubmitAssessments = async (e) => {
+    e.preventDefault();
+
+    const storageRef = ref(storage, attachments.name);
+    const uploadTask = uploadBytesResumable(storageRef, attachments);
+
+    // starts to upload the file
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+            break;
+        }
+      },
+      (e) => {
+        console.log(e);
+      },
+      async () => {
+        // gets the downloadURL of your file
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+
+        const newAssessments = {
+          assessmentTitle: assessmentTitle,
+          assessmentInstructions: assessmentInstructions,
+          attachments: downloadURL,
+          addedOn: serverTimestamp(),
+        };
+
+        try {
+          // Check user is available before accessing uid
+          if (user && user.uid) {
+            // Reference the 'Courses' collection, then the subcollection with the user's UID
+            const userCoursesCollection = collection(
+              db,
+              `Courses/${user.uid}/UserCourses/${courseId}/Assessments`
+            );
+
+            // Add the new lesson material document
+            await addDoc(userCoursesCollection, newAssessments);
+            alert("Successfully Added Lesson Materials!");
+            navigate(`/admin/course/${courseId}`);
+          } else {
+            console.log("User is not authenticated or UID is not available.");
+          }
+        } catch (e) {
+          // Log the error for better debugging
+          console.error("Error Occurred!", e);
+        }
+      }
+    );
+  };
+
+  // READ Operation
+  // Display all documents from UserCourses
+  const getCourse = async () => {
+    try {
+      if (user && user.uid) {
+        const courseDocRef = doc(
+          db,
+          `Courses/${user.uid}/UserCourses`,
+          courseId
+        );
+        const docSnap = await getDoc(courseDocRef);
+
+        if (docSnap.exists()) {
+          setCourseData(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching course:", error);
+    }
+  };
+
+  // Fetch the course data (READ Operation)
+  // Display the lesson materials after created
+  const getLessonMaterials = async () => {
+    try {
+      if (user && user.uid) {
+        const userCoursesCollection = collection(
+          db,
+          `Courses/${user.uid}/UserCourses/${courseId}/lessonMaterials`
+        );
+
+        const querySnapshot = await getDocs(userCoursesCollection);
+
+        const lessonMaterialsData = querySnapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .sort((a, b) => b.addedOn.toMillis() - a.addedOn.toMillis()); // Sort in descending order
+
+        setLessonMaterials(lessonMaterialsData);
+      }
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
+
+  // Fetch the course data (READ Operation)
+  // Display the lesson materials after created
+  const getAssessments = async () => {
+    try {
+      if (user && user.uid) {
+        const userCoursesCollection = collection(
+          db,
+          `Courses/${user.uid}/UserCourses/${courseId}/Assessments`
+        );
+
+        const querySnapshot = await getDocs(userCoursesCollection);
+
+        const assessmentsData = querySnapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .sort((a, b) => b.addedOn.toMillis() - a.addedOn.toMillis()); // Sort in descending order
+
+        setAssessments(assessmentsData);
+      }
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (user && user.uid && courseId) {
+      getCourse();
+      getLessonMaterials();
+      getAssessments();
+    }
+  }, [user, courseId]);
 
   return (
     <>
@@ -91,9 +345,6 @@ const CourseSection = () => {
             <img src={profileIcon} alt="profile-icon" />
           </div>
           <div className="userName-container">
-            <h2>{user && user.displayName}</h2>
-          </div>
-          <div className="userName-container">
             <h2>Hi, {user && user.displayName}!</h2>
           </div>
           <div className="logout-container">
@@ -105,13 +356,21 @@ const CourseSection = () => {
       </div>
 
       {/* Banner */}
-      <div className="course_banner">
-        <div className="course_img">
-          <img src={courseLogo} alt="Course Logo" className="course_logo" />
-          <div className="course_text">John Mike S. Wayne</div>
-          <div className="course_text2">Health Course 1</div>
+      {courseData ? (
+        <div className="course_banner">
+          <div className="course_img">
+            <img src={courseLogo} alt="Course Logo" className="course_logo" />
+            <div className="course_text">{courseData.assignedTeacher}</div>
+            <div className="course_text2">{courseData.description}</div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="loading-container">
+          <Box sx={{ display: "flex" }}>
+            <CircularProgress />
+          </Box>
+        </div>
+      )}
 
       {/*Course Title*/}
       <div className="course-header">
@@ -128,10 +387,12 @@ const CourseSection = () => {
         <button className="upload_lesson" onClick={toggleLessonModal}>
           Upload Lesson
         </button>
-        <button className="upload_assessment">Upload Assessment</button>
+        <button className="upload_assessment" onClick={toggleAssessmentModal}>
+          Upload Assessment
+        </button>
       </div>
 
-      {/* Lesson Modal */}
+      {/* Upload Materials Modal */}
       <div className={`overlay-lesson  ${lessonModal ? "show" : ""}`}>
         <div className="container_button">
           <img
@@ -141,23 +402,105 @@ const CourseSection = () => {
             onClick={toggleLessonModal}
           ></img>
         </div>
-
-        <form>
+        <form onSubmit={handleSubmitLessonMaterials}>
           <div className="content-uploadlesson">
             <div className="header-lesson">
               <h3 className="lesson-title">Upload Materials</h3>
               <button className="add-lesson">Post</button>
             </div>
             <div className="lesson_underline"></div>
-
-            <input type="text" className="lesson-input" placeholder="Title" />
             <input
               type="text"
+              className="lesson-input"
+              placeholder="Title"
+              required
+              onChange={(e) => setLessonTitle(e.target.value)}
+            />
+            <textarea
+              type="text"
               className="lesson-desc"
-              placeholder="Description"
+              placeholder="Description (optional)"
+              onChange={(e) => setLessonDescription(e.target.value)}
+            />
+            <h3 className="lesson-attach">Attachment</h3>
+            <input
+              type="file"
+              className="upload-butt"
+              onChange={(e) => {
+                setAttachments(e.target.files[0]);
+                setAttachmentFileName(e.target.files[0].name);
+              }}
+              id="uploadBtn"
+            />
+            <div className="uploadLabel-container">
+              <label className="uploadLabel" htmlFor="uploadBtn">
+                <div className="upload-img-container">
+                  <UploadIcon />
+                </div>
+                Upload
+              </label>
+              {attachmentFileName && (
+                <span className="attachmentFileName">{attachmentFileName}</span>
+              )}
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {/* Assessment Modal */}
+      <div className={`overlay-assessment  ${assessmentModal ? "show" : ""}`}>
+        <div className="container_button2">
+          <img
+            className="closebutton_assessment"
+            src={closebtt}
+            alt="Close Button2"
+            onClick={toggleAssessmentModal}
+          ></img>
+        </div>
+
+        <form onSubmit={handleSubmitAssessments}>
+          <div className="content-uploadassessment">
+            <div className="header-assessment">
+              <h3 className="assessment-title">Upload Assessment</h3>
+              <button className="add-assessment">Post</button>
+            </div>
+            <div className="assessment_underline"></div>
+
+            <input
+              type="text"
+              className="assessment-input"
+              placeholder="Title"
+              onChange={(e) => setAssessmentTitle(e.target.value)}
+            />
+            <textarea
+              type="text"
+              className="assessment-desc"
+              placeholder="Instructions (optional)"
+              onChange={(e) => setAssessmentInstructions(e.target.value)}
             />
             <h3 className="lesson-attach">Attach</h3>
-            <button className="upload-butt">Upload</button>
+            <input
+              type="file"
+              className="upload-butt"
+              onChange={(e) => {
+                setAttachments(e.target.files[0]);
+                setAttachmentFileName(e.target.files[0].name);
+              }}
+              id="uploadBtn"
+            />
+            <div className="uploadLabel2-container">
+              <label className="uploadLabel2" htmlFor="uploadBtn">
+                <div className="upload-img-container">
+                  <UploadIcon />
+                </div>
+                Upload
+              </label>
+              {attachmentFileName && (
+                <span className="attachmentFileName2">
+                  {attachmentFileName}
+                </span>
+              )}
+            </div>
           </div>
         </form>
       </div>
@@ -165,78 +508,70 @@ const CourseSection = () => {
       {/*Course Materials*/}
       <div className="course_content-container">
         <div className="course-container">
-          <table className="course_materials">
-            <tr>
-              <td>
-                <button className="button_course">
-                  <img
-                    className="lesson_image"
-                    src={lessons}
-                    alt="lesson"
-                  ></img>
-                  <img className="lesson1_dot" src={dots} alt="dots"></img>
-                  <div className="lesson1_text">Lesson 1: Lesson Title</div>
-                  <div className="lesson1_text2">April 15, 2024</div>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button className="button_course">
-                  <img
-                    className="lesson_image2"
-                    src={lessons}
-                    alt="lesson"
-                  ></img>
-                  <img className="lesson2_dot" src={dots} alt="dots"></img>
-                  <div className="lesson2_text">Lesson 2: Lesson Title</div>
-                  <div className="lesson2_text2">April 16, 2024</div>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button className="button_course">
-                  <img
-                    className="lesson_image3"
-                    src={lessons}
-                    alt="lesson"
-                  ></img>
-                  <img className="lesson3_dot" src={dots} alt="dots"></img>
-                  <div className="lesson3_text">Lesson 3: Lesson Title</div>
-                  <div className="lesson3_text2">April 17, 2024</div>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button className="button_course">
-                  <img
-                    className="lesson_image4"
-                    src={lessons}
-                    alt="lesson"
-                  ></img>
-                  <img className="lesson4_dot" src={dots} alt="dots"></img>
-                  <div className="lesson4_text">Lesson 4: Lesson Title</div>
-                  <div className="lesson4_text2">April 18, 2024</div>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button className="button_course">
-                  <img
-                    className="lesson_image5"
-                    src={lessons}
-                    alt="lesson"
-                  ></img>
-                  <img className="lesson5_dot" src={dots} alt="dots"></img>
-                  <div className="lesson5_text">Lesson 5: Lesson Title</div>
-                  <div className="lesson5_text2">April 19, 2024</div>
-                </button>
-              </td>
-            </tr>
-          </table>
+          <h3 className="course-materials-h3">Lessons Materials</h3>
+          {lessonMaterials ? (
+            lessonMaterials.map((lesson) => (
+              <div className="course-material" key={lesson.id}>
+                <Link
+                  to={{
+                    pathname: `/admin/course/${courseId}/lessonMaterials/${lesson.id}`,
+                    state: { lesson }, // Passing the lesson data
+                  }}
+                  className="button_course"
+                >
+                  <img className="lesson_image" src={lessons} alt="lesson" />
+                  <img className="lesson_dot" src={dots} alt="dots" />
+                  <div className="lesson_text">
+                    <span>{lesson.lessonTitle}</span>
+                  </div>
+                  <div className="lesson_text2">
+                    <span>{lesson.addedOn.toDate().toLocaleString()}</span>
+                  </div>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <div className="loading-container">
+              <Box sx={{ display: "flex" }}>
+                <CircularProgress />
+              </Box>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/*Course Assessments*/}
+      <div className="course_content-container">
+        <div className="course-container">
+          <h3 className="course-assessments-h3">Assessments</h3>
+          {assessments ? (
+            assessments.map((assessments) => (
+              <div className="course-material" key={assessments.id}>
+                <Link
+                  to={{
+                    pathname: `/admin/course/${courseId}/Assessments/${assessments.id}`,
+                    state: { assessments },
+                  }}
+                  className="button_course"
+                >
+                  <img className="lesson_image" src={task} alt="task" />
+                  <img className="lesson_dot" src={dots} alt="dots" />
+                  <div className="lesson_text">
+                    <span>{assessments.assessmentTitle}</span>
+                  </div>
+                  <div className="lesson_text2">
+                    <span>{assessments.addedOn.toDate().toLocaleString()}</span>
+                  </div>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <div className="loading-assessments-container">
+              <Box sx={{ display: "flex" }}>
+                <CircularProgress />
+              </Box>
+            </div>
+          )}
         </div>
       </div>
     </>
