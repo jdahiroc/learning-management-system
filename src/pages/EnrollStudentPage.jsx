@@ -1,6 +1,12 @@
+// img
 import logoBrand from "../assets/LOGOBRAND.png";
 import userIcon from "../assets/MaleUser.png";
+import Courseline from "../assets/headerLine.png";
 import profileIcon from "../assets/profileIcon.png";
+
+//css
+import "../styles/enrollStudentPage.css";
+
 
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
@@ -61,8 +67,7 @@ const Test = () => {
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
   const [enrolledStudents, setEnrolledStudents] = useState([]);
-  
-  // navigation variable
+   // navigation variable
   const navigate = useNavigate();
 
   const [profileModal, setProfileModal] = useState(false);
@@ -81,7 +86,6 @@ const Test = () => {
       console.log(e.message);
     }
   };
-
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -202,7 +206,6 @@ const Test = () => {
       fetchEnrolledStudents();
     }
   }, [user, courseId]);
-
   return (
     <>
     {/* NAVIGATIONS */}
@@ -253,15 +256,34 @@ const Test = () => {
         </div>
       </div>
 
+      {/* header */}
+      <div className="headerTexttt-container">
+        <div className="add-student-container">
+          <div className="h1-container">
+            <h1>Student</h1>
+          </div>
+          <div className="add-student-line">
+        <img src={Courseline}></img>
+      </div>
+        </div>
+      </div>
+      
+
       <div className="enroll-student-page">
         <h1>Enroll Students</h1>
+        <div className="search-student">
+          <div className="fill-student">
         <input
           type="text"
           placeholder="Enter student email"
           value={search}
           onChange={handleInputChange}
         />
+        </div>
+        <div className="fill-student-btn">
         <button onClick={handleSearch}>Search</button>
+        </div>
+        </div>
 
         {showPopup && (
           <Popup
@@ -283,13 +305,18 @@ const Test = () => {
 
         <h2>Enrolled Students</h2>
         {enrolledStudents.map((student) => (
+          // eslint-disable-next-line react/jsx-key
+          <div className="student-item-box">
           <div key={student.id} className="student-item">
             <span>{student.email}</span>
             <span>{student.fName}</span>
             <span>{student.lName}</span>
             <span>{student.gender}</span>
-
+            <div className="student-deletee">
             <button onClick={() => handleDeleteClick(student)}>Delete</button>
+            </div>
+            </div>
+            
           </div>
         ))}
       </div>
