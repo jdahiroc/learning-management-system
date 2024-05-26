@@ -81,8 +81,6 @@ const LessonMaterialsPage = () => {
             <Link to="/admin/page/course">
               <li>COURSES</li>
             </Link>
-            <li>ABOUT US</li>
-            <li>CONTACT US</li>
           </ul>
         </div>
         {/* Profile Icon */}

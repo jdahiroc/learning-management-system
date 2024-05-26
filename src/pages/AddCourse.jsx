@@ -67,7 +67,6 @@ const AddCourse = () => {
         await addDoc(userCoursesCollection, newCourse);
         alert("Successfully Added Course!");
         navigate("/admin/page/course");
-        
       } else {
         console.log("User is not authenticated or UID is not available.");
       }
@@ -91,8 +90,6 @@ const AddCourse = () => {
             <Link to="/admin/page/course">
               <li>COURSES</li>
             </Link>
-            <li>ABOUT US</li>
-            <li>CONTACT US</li>
           </ul>
         </div>
         <div onClick={toggleModal} className="profile-container">
