@@ -54,6 +54,7 @@ const Test = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [deleteStudent, setDeleteStudent] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
   const [enrolledStudents, setEnrolledStudents] = useState([]);
 
