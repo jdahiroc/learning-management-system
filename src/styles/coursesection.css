@@ -699,13 +699,18 @@ input[type="file"] {
   font-size: 50px;
 }
 
-
 /* add button */
 
 .addbutt_container {
   display: flex;
   justify-content: flex-end;
   margin-right: 1.5em;
+}
+
+.addStudent-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1em;
 }
 
 .addbutt_container:hover {
