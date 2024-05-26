@@ -1,0 +1,152 @@
+/* Container for the search functionality */
+.search-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the input field */
+.search-container input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Styling the search button */
+.search-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Popup container */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.popup-text {
+  margin: 0 0 10px;
+}
+
+.close-btn,
+.add-btn,
+.delete-btn,
+.confirm-btn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.close-btn:hover,
+.add-btn:hover,
+.delete-btn:hover,
+.confirm-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Overlay for the popup */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Styling for student details in popup */
+.student-details p {
+  margin: 5px 0;
+}
+
+/* Table for added students */
+.added-students-table {
+  max-width: 500px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.added-students-table th,
+.added-students-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.added-students-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #007bff;
+  color: white;
+}
+
+/* Styling for enrolled students table */
+.enrolled-students-list {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.enrolled-students-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.enrolled-students-list th,
+.enrolled-students-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.enrolled-students-list th {
+  background-color: #007bff;
+  color: white;
+}
+
+.enrolled-students-list tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Styling for delete button in the table */
+.enrolled-students-list .delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.enrolled-students-list .delete-btn:hover {
+  background-color: #c82333;
+}
