@@ -22,6 +22,7 @@ const Popup = ({ message, onClose }) => (
   </div>
 );
 
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
