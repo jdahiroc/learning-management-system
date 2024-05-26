@@ -210,9 +210,11 @@ const Test = () => {
       <h2>Enrolled Students</h2>
       {enrolledStudents.map((student) => (
         <div key={student.id} className="student-item">
-          <p>
-            {student.fName} {student.lName}
-          </p>
+          <span>{student.email}</span>
+          <span>{student.fName}</span>
+          <span>{student.lName}</span>
+          <span>{student.gender}</span>
+
           <button onClick={() => handleDeleteClick(student)}>Delete</button>
         </div>
       ))}
