@@ -1,3 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Duru+Sans&family=Inter:wght@100..900&display=swap");
+
+body {
+  background-color: #e9eef6;
+}
+
+/* Navigations */
+.navigation-container {
+  display: flex;
+  background: #53bde5;
+}
+
+.navigation-container .logo-container {
+  justify-content: flex-start;
+  margin-top: 0.5em;
+}
+
+.navigation-container .logo-container img {
+  width: auto;
+  height: 65px;
+}
+
+.navigation-container .navigation-controls ul {
+  list-style: none;
+  margin-left: 600px;
+  margin-top: 1.7em;
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation-container .navigation-controls ul li {
+  margin-right: 2.5em;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navigation-container .profile-container {
+  background: #ffffff;
+  display: flex;
+  padding-top: 1em;
+  border-radius: 20px;
+}
+
+.navigation-container .profile-container h4 {
+  padding-top: 0em;
+  padding-left: 0.5em;
+}
+
+/* Profile Modal */
+
+.overlay-profileIcon {
+  display: none;
+  position: fixed;
+  left: 72%;
+  top: 10.5%;
+  background-color: #f3f7ff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  max-width: 350px;
+  max-height: 305px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: none;
+}
+
+.show {
+  display: block;
+}
+
+.close-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+  margin-right: 1.5em;
+}
+
+.profile-closebtn {
+  border: none;
+  background-color: #f3f7ff;
+  color: #898989;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.profile-closebtn:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.profileIcon-modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileIcon-modal-container .profile-icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profileIcon-modal-container .profile-icon-container img {
+  height: 84px;
+  width: 84px;
+}
+
+.profileIcon-modal-container .userName-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.profileIcon-modal-container .userName-container h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.profileIcon-modal-container .email-container {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  margin-top: 0.3em;
+}
+
+.profileIcon-modal-container .email-container p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.profileIcon-modal-container .logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.profileIcon-modal-container .logout-container button {
+  padding: 10px 65px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: #53bde5;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profileIcon-modal-container .logout-container button:hover {
+  background-color: #53bde5;
+  color: #ffffff;
+}
+
+/* container for Add course */
+.headerTexttt-container {
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  margin-top: 100px;
+  color: #056488;
+}
+
+.headerTexttt-container h1 {
+  padding: 20px 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  margin-right: 100px;
+}
+
+.h1-container {
+  margin-right: 700px;
+}
+
+/* Line for Add course */
+.add-student-line {
+  display: flex;
+  width: 35px;
+  height: 100px;
+  justify-content: center;
+  margin-left: 430px;
+}
+
+/* Enroll student */
+.enroll-student-page h1 {
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  margin-top: 1px;
+  margin-right: 700px;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  color: #898989;
+  font-style: italic;
+}
+
+.search-student {
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  margin-right: 10px;
+}
+
+.fill-student input {
+  width: 750px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.158);
+  font-family: "Inter", sans-serif;
+  color: #056488;
+  font-weight: 500;
+}
+
+.fill-student-btn button {
+  width: 110px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.158);
+  background-color: #056488;
+  font-family: "Inter", sans-serif;
+  color: #e9eef6;
+  font-weight: 500;
+}
+
+.enroll-student-page h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  z-index: 1000;
+  font-size: 22px;
+  font-family: "Inter", sans-serif;
+  color: #056488;
+}
+.student-item-box {
+  background-color: #f6f6f6;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.158);
+}
+
+.student-item {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  z-index: 1000;
+  font-size: 22px;
+  font-family: "Inter", sans-serif;
+  color: #056488;
+}
+
+.student-deletee {
+  display: inline-flex;
+  justify-content: center;
+  z-index: 1000;
+  font-size: 40;
+  font-family: "Inter", sans-serif;
+  margin-left: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.158);
+  background-color: #056488;
+  font-family: "Inter", sans-serif;
+  color: #e9eef6;
+  font-weight: 500;
+}
+
+.student-deletee button {
+  border-radius: 4px;
+  background-color: #0056b3;
+  font-family: "Inter", sans-serif;
+  color: #e9eef6;
+  font-weight: 500;
+  padding: 5px;
+}
+
 /* Container for the search functionality */
 .search-container {
   max-width: 500px;
@@ -24,7 +297,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #056488;
   color: white;
   font-size: 16px;
   cursor: pointer;
