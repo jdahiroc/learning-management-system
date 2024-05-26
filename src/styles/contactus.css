@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Duru+Sans&family=Inter:wght@100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Navigations */
+.navigation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background: #53bde5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navigation-container .logo-container {
+  justify-content: flex-start;
+  margin-top: 0.5em;
+}
+
+.navigation-container .logo-container img {
+  width: auto;
+  height: 65px;
+}
+
+.navigation-container .navigation-controls ul {
+  list-style: none;
+  margin-left: 600px;
+  margin-top: 1.7em;
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation-container .navigation-controls ul li {
+  margin-right: 2.5em;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navigation-container .navigation-controls ul li:hover {
+  cursor: pointer;
+  color: #e9eef6;
+  border-radius: 5px;
+}
+
+.navigation-container .profile-container {
+  height: 50px;
+  width: auto;
+  background: #ffffff;
+  display: flex;
+  padding-top: 1em;
+  padding-left: 0.6em;
+  padding-right: 1em;
+  margin-top: 0.9em;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.navigation-container .profile-container:hover {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-container .profile-container h4 {
+  padding-top: 0em;
+  padding-left: 0.5em;
+}
+
+.navigation-container .profile-container img {
+  margin-top: -0.5em;
+}
+
+.navigation-container .profile-container .profile-name-container h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.navigation-container .profile-container .profile-icon-container img {
+  width: 35px;
+  height: 35px;
+}
+
+/* Profile Modal */
+
+.overlay-profileIcon {
+  display: none;
+  position: absolute;
+  left: 72%;
+  top: 10.5%;
+  background-color: #f3f7ff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  max-width: 350px;
+  max-height: 305px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: none;
+}
+
+.show {
+  display: block;
+}
+
+.close-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+  margin-right: 1.5em;
+}
+
+.profile-closebtn {
+  border: none;
+  background-color: #f3f7ff;
+  color: #898989;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.profile-closebtn:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.profileIcon-modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileIcon-modal-container .profile-icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profileIcon-modal-container .profile-icon-container img {
+  height: 84px;
+  width: 84px;
+}
+
+.profileIcon-modal-container .userName-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.profileIcon-modal-container .userName-container h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.profileIcon-modal-container .email-container {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  margin-top: 0.3em;
+}
+
+.profileIcon-modal-container .email-container p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.profileIcon-modal-container .logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.profileIcon-modal-container .logout-container button {
+  padding: 10px 65px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ffffff;
+  color: #53bde5;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profileIcon-modal-container .logout-container button:hover {
+  background-color: #53bde5;
+  color: #ffffff;
+}
+
+/*contact us*/
+
+.contactus-container {
+  display: flex;
+  margin-top: 15%;
+  font-size: 20px;
+}
+
+h3.follow-text {
+  position: absolute;
+  color: #056488;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  left: 20%;
+}
+
+button.lol {
+  background-color: white;
+}
+
+.contactus_underline {
+  width: 100%;
+  max-width: 900px;
+  height: 2px;
+  background-color: #000000;
+  position: absolute;
+  top: 34%;
+  left: 20%;
+}
+
+.socialmedias {
+  position: absolute;
+  top: 38%;
+  left: 19.6%;
+  background-color: #056488;
+  border-radius: 20px;
+}
+.socialmedias td {
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+
+.socialmedias img {
+  margin-right: 100px;
+  margin-left: 100px;
+  width: 100px;
+}
