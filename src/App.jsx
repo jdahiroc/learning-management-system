@@ -14,6 +14,7 @@ import AssessmentPage from "../src/pages/AssessmentPage";
 import AdminHomepage from "./pages/AdminHome";
 import AddCourse from "./pages/AddCourse";
 import AdminCoursePage from "./pages/AdminCoursePage";
+import Contactus from "./pages/ContactUs";
 
 function App() {
   return (
@@ -31,6 +32,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Homepage />
+                </ProtectedRoute>
+              }
+              userType="Student"
+            />
+              <Route
+              path="/contactus"
+              element={
+                <ProtectedRoute>
+                  <Contactus />
                 </ProtectedRoute>
               }
               userType="Student"
