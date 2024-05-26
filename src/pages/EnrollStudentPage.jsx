@@ -1,6 +1,10 @@
+import logoBrand from "../assets/LOGOBRAND.png";
+import userIcon from "../assets/MaleUser.png";
+import profileIcon from "../assets/profileIcon.png";
+
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { db } from "../firebase";
 import {
   collection,
@@ -47,7 +51,7 @@ const Popup = ({ message, student, onClose, onAdd, onDelete }) => (
 
 const Test = () => {
   const { courseId } = useParams();
-  const { user } = UserAuth();
+  const { user, logout } = UserAuth();
   const [search, setSearch] = useState("");
   const [student, setStudent] = useState(null);
   const [popupMessage, setPopupMessage] = useState("");
@@ -57,6 +61,27 @@ const Test = () => {
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
   const [enrolledStudents, setEnrolledStudents] = useState([]);
+  
+  // navigation variable
+  const navigate = useNavigate();
+
+  const [profileModal, setProfileModal] = useState(false);
+  //Profile Modal Function
+  const toggleProfileModal = () => {
+    setProfileModal(!profileModal);
+  };
+
+  //logout function
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+      console.log("You are logged out!");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -179,46 +204,96 @@ const Test = () => {
   }, [user, courseId]);
 
   return (
-    <div className="enroll-student-page">
-      <h1>Enroll Students</h1>
-      <input
-        type="text"
-        placeholder="Enter student email"
-        value={search}
-        onChange={handleInputChange}
-      />
-      <button onClick={handleSearch}>Search</button>
-
-      {showPopup && (
-        <Popup
-          message={popupMessage}
-          student={student}
-          onClose={() => setShowPopup(false)}
-          onAdd={handleAdd}
-        />
-      )}
-
-      {showDeletePopup && (
-        <Popup
-          message="Are you sure you want to delete this student?"
-          student={deleteStudent}
-          onClose={() => setShowDeletePopup(false)}
-          onDelete={handleDeleteConfirm}
-        />
-      )}
-
-      <h2>Enrolled Students</h2>
-      {enrolledStudents.map((student) => (
-        <div key={student.id} className="student-item">
-          <span>{student.email}</span>
-          <span>{student.fName}</span>
-          <span>{student.lName}</span>
-          <span>{student.gender}</span>
-
-          <button onClick={() => handleDeleteClick(student)}>Delete</button>
+    <>
+    {/* NAVIGATIONS */}
+    <div className="navigation-container">
+        {/* nav-logo */}
+        <div className="logo-container">
+          <Link to="/admin/home">
+            <img src={logoBrand} alt="logoBrand" loading="lazy" />
+          </Link>
         </div>
-      ))}
-    </div>
+        <div className="navigation-controls">
+          <ul>
+            <Link to="/admin/page/course">
+              <li>COURSES</li>
+            </Link>
+          </ul>
+        </div>
+        {/* Navigation Profile */}
+        <div onClick={toggleProfileModal} className="profile-container">
+          <div className="profile-icon-container">
+            <img src={userIcon} alt="profile-icon" />
+          </div>
+          <div className="profile-name-container">
+            <h4>{user && user.displayName}</h4>
+          </div>
+        </div>
+      </div>
+
+      {/* Profile Modal */}
+      <div className={`overlay-profileIcon  ${profileModal ? "show" : ""}`}>
+        <div className="close-btn-container">
+          <button className="profile-closebtn" onClick={toggleProfileModal}>
+            &times;
+          </button>
+        </div>
+        <div className="profileIcon-modal-container">
+          <div className="profile-icon-container">
+            <img src={profileIcon} alt="profile-icon" />
+          </div>
+          <div className="userName-container">
+            <h2>Hi, {user && user.displayName}!</h2>
+          </div>
+          <div className="logout-container">
+            <button onClick={handleLogout} className="logout-btn">
+              LOGOUT
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="enroll-student-page">
+        <h1>Enroll Students</h1>
+        <input
+          type="text"
+          placeholder="Enter student email"
+          value={search}
+          onChange={handleInputChange}
+        />
+        <button onClick={handleSearch}>Search</button>
+
+        {showPopup && (
+          <Popup
+            message={popupMessage}
+            student={student}
+            onClose={() => setShowPopup(false)}
+            onAdd={handleAdd}
+          />
+        )}
+
+        {showDeletePopup && (
+          <Popup
+            message="Are you sure you want to delete this student?"
+            student={deleteStudent}
+            onClose={() => setShowDeletePopup(false)}
+            onDelete={handleDeleteConfirm}
+          />
+        )}
+
+        <h2>Enrolled Students</h2>
+        {enrolledStudents.map((student) => (
+          <div key={student.id} className="student-item">
+            <span>{student.email}</span>
+            <span>{student.fName}</span>
+            <span>{student.lName}</span>
+            <span>{student.gender}</span>
+
+            <button onClick={() => handleDeleteClick(student)}>Delete</button>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
