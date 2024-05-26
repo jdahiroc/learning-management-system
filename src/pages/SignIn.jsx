@@ -27,6 +27,7 @@ const Popup = ({ message, onClose }) => (
   </div>
 );
 
+
 const loadingModal = {
   position: "absolute",
   top: "50%",
