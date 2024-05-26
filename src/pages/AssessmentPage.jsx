@@ -3,7 +3,11 @@ import logoBrand from "../assets/LOGOBRAND.png";
 import userIcon from "../assets/profileIcon.png";
 import profileIcon from "../assets/profileIcon.png";
 import LessonLogo from "../assets/Lessons.png";
-import thumbnail1 from "../assets/thumbnail1.png";
+import file from "../assets/file.png"
+
+// Material UI
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 // React Hooks
 import { useState, useEffect } from "react";
@@ -23,7 +27,7 @@ const CourseSection2 = () => {
   const navigate = useNavigate();
   const { courseId, assessmentId } = useParams();
 
-  const [assessment, setAssessment] = useState(null); // State to store assessment data
+  const [assessment, setAssessment] = useState(null);
 
   // Function to fetch assessment data
   const fetchAssessmentData = async () => {
@@ -89,7 +93,7 @@ const CourseSection2 = () => {
             <img src={userIcon} alt="profile-icon" />
           </div>
           <div className="profile-name-container">
-            <h4>{user && user.displayName}!</h4>
+            <h4>{user && user.displayName}</h4>
           </div>
         </div>
       </div>
@@ -106,7 +110,7 @@ const CourseSection2 = () => {
             <img src={profileIcon} alt="profile-icon" />
           </div>
           <div className="userName-container">
-            <h2>Hi, {user && user.displayName}!</h2>
+            <h2>Hi, {user && user.displayName}</h2>
           </div>
           <div className="logout-container">
             <button onClick={handleLogout} className="logout-btn">
@@ -118,25 +122,21 @@ const CourseSection2 = () => {
 
       <div className="course2-container">
         {assessment ? (
-          <div className="course2-header">
-            <h3 className="course2-title">{assessment.assessmentTitle}</h3>
-            <div className="course2-underline"></div>
+          <div className="content-course2">
+            <img src={LessonLogo} alt="logoBrand" className="course2-logo1" />
+            <h3 className="c2-lesson-title">{assessment.assessmentTitle}</h3>
+            <h3 className="c2-lesson-date">
+              {assessment.addedOn &&
+                new Date(assessment.addedOn.toDate()).toLocaleDateString()}
+            </h3>
 
-            <div className="content-course2">
-              <img src={LessonLogo} alt="logoBrand" className="course2-logo1" />
+            <div className="course2-underline2"></div>
 
-              <h3 className="c2-lesson-title">{assessment.assessmentTitle}</h3>
-              <h3 className="c2-lesson-date">
-                {assessment.addedOn &&
-                  new Date(assessment.addedOn.toDate()).toLocaleDateString()}
-              </h3>
-
-              <div className="course2-underline2"></div>
-
+            <Link to={assessment.attachments} target="_blank">
               <div className="c2-lessons-content">
                 <div className="c2-lessons1">
                   <img
-                    src={thumbnail1}
+                    src={file}
                     className="thumbnail1-img"
                     alt="thumbnail"
                   />
@@ -146,14 +146,15 @@ const CourseSection2 = () => {
                   <h3 className="c2-lesson1-description">
                     {assessment.assessmentInstructions}
                   </h3>
-                  <h3 className="c2-lesson1-file">{assessment.attachments}</h3>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ) : (
-          <div>
-            <p>Loading assessment data...</p>
+          <div className="loading-container">
+            <Box sx={{ display: "flex" }}>
+              <CircularProgress />
+            </Box>
           </div>
         )}
       </div>

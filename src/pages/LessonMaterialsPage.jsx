@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
+// Material UI
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+
 // CSS
 import "../styles/lessonmaterialsPage.css";
 
@@ -10,7 +14,7 @@ import "../styles/lessonmaterialsPage.css";
 import logoBrand from "../assets/LOGOBRAND.png";
 import userIcon from "../assets/profileIcon.png"; // Changed from profileIcon to userIcon
 import LessonLogo from "../assets/Lessons.png";
-import thumbnail1 from "../assets/thumbnail1.png";
+import file from "../assets/file.png"
 
 // Firebase
 import { doc, getDoc } from "firebase/firestore";
@@ -119,25 +123,21 @@ const LessonMaterialsPage = () => {
       {/* Course Content */}
       <div className="course2-container">
         {lesson ? (
-          <div className="course2-header">
-            <h3 className="course2-title">{lesson.lessonTitle}</h3>
-            <div className="course2-underline"></div>
+          <div className="content-course2">
+            <img src={LessonLogo} alt="logoBrand" className="course2-logo1" />
+            <h3 className="c2-lesson-title">{lesson.lessonTitle}</h3>
+            <h3 className="c2-lesson-date">
+              {lesson.addedOn &&
+                new Date(lesson.addedOn.toDate()).toLocaleDateString()}
+            </h3>
 
-            <div className="content-course2">
-              <img src={LessonLogo} alt="logoBrand" className="course2-logo1" />
+            <div className="course2-underline2"></div>
 
-              <h3 className="c2-lesson-title">{lesson.lessonTitle}</h3>
-              <h3 className="c2-lesson-date">
-                {lesson.addedOn &&
-                  new Date(lesson.addedOn.toDate()).toLocaleDateString()}
-              </h3>
-
-              <div className="course2-underline2"></div>
-
+            <Link to={lesson.lessonAttachments} target="_blank">
               <div className="c2-lessons-content">
                 <div className="c2-lessons1">
                   <img
-                    src={thumbnail1}
+                    src={file}
                     className="thumbnail1-img"
                     alt="thumbnail"
                   />
@@ -145,16 +145,15 @@ const LessonMaterialsPage = () => {
                   <h3 className="c2-lesson1-description">
                     {lesson.lessonDescription}
                   </h3>
-                  <h3 className="c2-lesson1-file">
-                    {lesson.lessonAttachments}
-                  </h3>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ) : (
-          <div>
-            <p>No lesson data available.</p>
+          <div className="loading-container">
+            <Box sx={{ display: "flex" }}>
+              <CircularProgress />
+            </Box>
           </div>
         )}
       </div>
