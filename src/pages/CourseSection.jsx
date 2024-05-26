@@ -8,6 +8,7 @@ import task from "../assets/Tasks.png";
 import dots from "../assets/dots.png";
 import profileIcon from "../assets/profileIcon.png";
 import closebtt from "../assets/Close.png";
+import addStudentIcon from "../assets/add-student.png";
 
 // Material UI
 import CircularProgress from "@mui/material/CircularProgress";
@@ -377,8 +378,14 @@ const CourseSection = () => {
       </div>
 
       {/* Modal Button */}
-      <div className="addbutt_container" onClick={toggleModal}>
-        <img src={addbutton} alt="addbutton" />
+      <div className="addbutt_container">
+        {/* Add/Enroll Student Icon Button */}
+        <Link to={`/admin/add/${courseId}/students`}>
+          <div className="addStudent-container">
+            <img src={addStudentIcon} alt="Add Student" />
+          </div>
+        </Link>
+        <img onClick={toggleModal} src={addbutton} alt="addbutton" />
       </div>
 
       <div className={`overlay-course  ${modal ? "show" : ""}`}>
