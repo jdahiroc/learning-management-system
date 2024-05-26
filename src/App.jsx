@@ -15,6 +15,7 @@ import AdminHomepage from "./pages/AdminHome";
 import AddCourse from "./pages/AddCourse";
 import AdminCoursePage from "./pages/AdminCoursePage";
 import Contactus from "./pages/ContactUs";
+import EnrollStudentPage from "./pages/EnrollStudentPage";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
               }
               userType="Student"
             />
-              <Route
+            <Route
               path="/contactus"
               element={
                 <ProtectedRoute>
@@ -99,6 +100,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AddCourse />
+                </ProtectedRoute>
+              }
+              userType="Teacher"
+            />
+            <Route
+              path="/admin/add/:courseId/students"
+              element={
+                <ProtectedRoute>
+                  <EnrollStudentPage />
                 </ProtectedRoute>
               }
               userType="Teacher"
