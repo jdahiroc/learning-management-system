@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase";
@@ -13,6 +14,7 @@ import {
 import "../styles/enrollStudentPage.css";
 import { UserAuth } from "../context/AuthContext";
 
+// eslint-disable-next-line react/prop-types
 const Popup = ({ message, student, onClose, onAdd, onDelete }) => (
   <>
     <div className="overlay" />
@@ -54,9 +56,6 @@ const Test = () => {
   const [deleteStudent, setDeleteStudent] = useState(null);
   const [error, setError] = useState("");
   const [enrolledStudents, setEnrolledStudents] = useState([]);
-
-  // Ensure courseId is correctly retrieved either from props or params
-  const courseID = courseId || params.courseId;
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
