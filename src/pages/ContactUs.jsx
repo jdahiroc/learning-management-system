@@ -41,19 +41,19 @@ const Contactus = () => {
       <div className="navigation-container">
         {/* nav-logo */}
         <div className="logo-container">
-          <Link to="/admin/home">
+          <Link to="/home">
             <img src={logoBrand} alt="logoBrand" loading="lazy" />
           </Link>
         </div>
         <div className="navigation-controls">
           <ul>
-            <Link to="/admin/page/course">
+            <Link to="/page/course">
               <li>COURSES</li>
             </Link>
             <li>ABOUT US</li>
             <Link to="/contactUs">
-                <li>CONTACT US</li>
-              </Link>
+              <li>CONTACT US</li>
+            </Link>
           </ul>
         </div>
         {/* Navigation Profile */}
